@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import Image from "next/image";
 
 const tags = [
   "React",
@@ -33,18 +34,82 @@ export default function About() {
           About
         </motion.p>
 
-        <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-start">
-          {/* Left: statement */}
+        <div className="grid md:grid-cols-[300px_1fr] lg:grid-cols-[340px_1fr] gap-12 md:gap-16 lg:gap-24 items-start">
+          {/* Left: photo + identity */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.9, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col gap-5"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-tight">
-              Building systems that scale. Writing code that lasts.
-            </h2>
+            <div className="relative aspect-[4/5] w-full overflow-hidden border border-black/10">
+              <Image
+                src="/avatar.jpg"
+                alt="James Latten — Software Engineer"
+                fill
+                sizes="(max-width: 768px) 100vw, 340px"
+                className="object-cover object-top grayscale-[20%]"
+              />
+            </div>
+            <div>
+              <p className="text-sm font-bold tracking-tight">James Latten</p>
+              <p className="text-xs tracking-widest uppercase text-black/40 mt-0.5">
+                Software Engineer
+              </p>
+            </div>
+          </motion.div>
 
-            <div className="flex flex-wrap gap-2 mt-10">
+          {/* Right: statement + bio + tags */}
+          <div className="flex flex-col gap-10">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-tight">
+                Building systems that scale. Writing code that lasts.
+              </h2>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.9, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-col gap-5 text-black/65 leading-relaxed text-[15px]"
+            >
+              <p>
+                Results-driven Software Engineer with 4+ years of experience building
+                scalable web applications and cloud-based systems. My background spans
+                full-stack development, from pixel-perfect frontends in React and
+                TypeScript to robust backend services with PHP, Python, and Java.
+              </p>
+              <p>
+                Currently serving as a Technology Development Analyst at PNC Bank,
+                where I work on highly complex distributed systems serving millions of
+                customers. I apply Data Structures and Algorithms to achieve measurable
+                performance improvements, including a 30% boost in system throughput
+                and a 15% reduction in processing time.
+              </p>
+              <p>
+                Experienced in Agile environments, CI/CD pipelines, and modern version
+                control workflows using Git, GitHub, and Bitbucket. I am also the
+                founder of Foundry Frame, a creative web design agency based in Ohio,
+                where I translate engineering expertise into client-facing digital
+                experiences.
+              </p>
+              <p>
+                Adept at leveraging AI tools including GitHub Copilot, OpenAI, and
+                Claude to accelerate development and build intelligent, scalable
+                solutions.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.9, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-wrap gap-2"
+            >
               {tags.map((tag) => (
                 <span
                   key={tag}
@@ -53,42 +118,8 @@ export default function About() {
                   {tag}
                 </span>
               ))}
-            </div>
-          </motion.div>
-
-          {/* Right: bio */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col gap-6 text-black/65 leading-relaxed text-[15px]"
-          >
-            <p>
-              Results-driven Software Engineer with 4+ years of experience building
-              scalable web applications and cloud-based systems. My background spans
-              full-stack development, from pixel-perfect frontends in React and
-              TypeScript to robust backend services with PHP, Python, and Java.
-            </p>
-            <p>
-              Currently serving as a Technology Development Analyst at PNC Bank,
-              where I work on highly complex distributed systems serving millions of
-              customers. I apply Data Structures and Algorithms to achieve measurable
-              performance improvements, including a 30% boost in system throughput
-              and a 15% reduction in processing time.
-            </p>
-            <p>
-              Experienced in Agile environments, CI/CD pipelines, and modern version
-              control workflows using Git, GitHub, and Bitbucket. I am also the
-              founder of Foundry Frame, a creative web design agency based in Ohio,
-              where I translate engineering expertise into client-facing digital
-              experiences.
-            </p>
-            <p>
-              Adept at leveraging AI tools including GitHub Copilot, OpenAI, and
-              Claude to accelerate development and build intelligent, scalable
-              solutions.
-            </p>
-          </motion.div>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>

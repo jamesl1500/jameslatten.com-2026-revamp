@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 
 const stats = [
@@ -34,7 +35,7 @@ const lineVariants = {
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen bg-black text-white flex flex-col">
+    <section className="relative min-h-screen bg-black text-white flex flex-col overflow-hidden">
       {/* Main content */}
       <div className="flex-1 flex flex-col justify-end max-w-screen-xl mx-auto w-full px-6 md:px-12 pb-16 pt-28">
         <motion.div
