@@ -35,6 +35,42 @@ const education = [
     highlights: [] as string[],
   },
   {
+    degree: "Certificate in IT-Programming & Development",
+    institution: "Cuyahoga Community College",
+    location: "Cleveland, OH",
+    year: "2026",
+    type: "Certificate" as const,
+    highlights: [
+      "PHP, Java, C#, HTML, CSS, and React",
+      "Full Stack Development",
+      "Computer Science and Data Structures and Algorithms",
+    ],
+  },
+  {
+    degree: "Certificate in IT-Web Application Development",
+    institution: "Cuyahoga Community College",
+    location: "Cleveland, OH",
+    year: "2026",
+    type: "Certificate" as const,
+    highlights: [
+      "PHP, Java, C#, HTML, CSS, and React",
+      "Full Stack Development",
+      "Computer Science and Data Structures and Algorithms",
+    ],
+  },
+  {
+    degree: "Certificate in .NET Programming",
+    institution: "Cuyahoga Community College",
+    location: "Cleveland, OH",
+    year: "2026",
+    type: "Certificate" as const,
+    highlights: [
+      "C#, ASP.NET, and Blazor",
+      "Full Stack Development with .NET technologies",
+      "Computer Science and Data Structures and Algorithms",
+    ],
+  },
+  {
     degree: "Certificate in Web Programming Fundamentals",
     institution: "Lorain County Community College",
     location: "Elyria, OH",
