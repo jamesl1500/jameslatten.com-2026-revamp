@@ -12,13 +12,13 @@ const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "James Latten",
-  url: "https://jameslatten.com",
+  url: "https://www.jameslatten.com",
   email: "hello@jameslatten.com",
   telephone: "+12168897822",
   jobTitle: "Software Engineer",
   description:
     "Full-stack Software Engineer with 4+ years of experience building scalable web applications and cloud-based systems using React, TypeScript, PHP, AWS, and more.",
-  image: "https://jameslatten.com/opengraph-image",
+  image: "https://www.jameslatten.com/opengraph-image",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Lorain",
@@ -79,7 +79,7 @@ const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "James Latten — Software Engineer",
-  url: "https://jameslatten.com",
+  url: "https://www.jameslatten.com",
   description:
     "Portfolio website of James Latten, a full-stack Software Engineer based in Lorain, Ohio.",
   author: {

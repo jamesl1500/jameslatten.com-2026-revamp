@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Education",
   description: "Academic degrees and certificates earned by James Latten.",
   alternates: {
-    canonical: "https://jameslatten.com/education",
+    canonical: "https://www.jameslatten.com/education",
   },
 };
 
@@ -17,14 +17,14 @@ export default function EducationPage() {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: "Education",
-    url: "https://jameslatten.com/education",
+    url: "https://www.jameslatten.com/education",
     description: "Academic degrees and certificates earned by James Latten.",
     mainEntity: {
       "@type": "ItemList",
       itemListElement: education.map((entry, index) => ({
         "@type": "ListItem",
         position: index + 1,
-        url: `https://jameslatten.com/education/${entry.slug}`,
+        url: `https://www.jameslatten.com/education/${entry.slug}`,
         name: entry.degree,
       })),
     },
@@ -37,13 +37,13 @@ export default function EducationPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://jameslatten.com",
+        item: "https://www.jameslatten.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Education",
-        item: "https://jameslatten.com/education",
+        item: "https://www.jameslatten.com/education",
       },
     ],
   };
@@ -51,17 +51,17 @@ export default function EducationPage() {
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: "Education",
-    url: "https://jameslatten.com/education",
+    url: "https://www.jameslatten.com/education",
     isPartOf: {
       "@type": "WebSite",
       name: "James Latten — Software Engineer",
-      url: "https://jameslatten.com",
+      url: "https://www.jameslatten.com",
     },
     breadcrumb: {
-      "@id": "https://jameslatten.com/education#breadcrumb",
+      "@id": "https://www.jameslatten.com/education#breadcrumb",
     },
     mainEntity: {
-      "@id": "https://jameslatten.com/education#collection",
+      "@id": "https://www.jameslatten.com/education#collection",
     },
   };
 
@@ -69,11 +69,11 @@ export default function EducationPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify({ ...educationPageSchema, "@id": "https://jameslatten.com/education#collection" }) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({ ...educationPageSchema, "@id": "https://www.jameslatten.com/education#collection" }) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify({ ...educationBreadcrumbSchema, "@id": "https://jameslatten.com/education#breadcrumb" }) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({ ...educationBreadcrumbSchema, "@id": "https://www.jameslatten.com/education#breadcrumb" }) }}
       />
       <script
         type="application/ld+json"

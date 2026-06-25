@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${experience.role} at ${experience.company}`,
     description: experience.summary,
     alternates: {
-      canonical: `https://jameslatten.com/experience/${experience.slug}`,
+      canonical: `https://www.jameslatten.com/experience/${experience.slug}`,
     },
   };
 }
@@ -58,9 +58,9 @@ export default async function ExperienceDetailPage({ params }: Props) {
     creator: {
       "@type": "Person",
       name: "James Latten",
-      url: "https://jameslatten.com",
+      url: "https://www.jameslatten.com",
     },
-    url: `https://jameslatten.com/experience/${experience.slug}`,
+    url: `https://www.jameslatten.com/experience/${experience.slug}`,
   };
   const experienceBreadcrumbSchema = {
     "@context": "https://schema.org",
@@ -70,19 +70,19 @@ export default async function ExperienceDetailPage({ params }: Props) {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://jameslatten.com",
+        item: "https://www.jameslatten.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Experience",
-        item: "https://jameslatten.com/experience",
+        item: "https://www.jameslatten.com/experience",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: `${experience.role} at ${experience.company}`,
-        item: `https://jameslatten.com/experience/${experience.slug}`,
+        item: `https://www.jameslatten.com/experience/${experience.slug}`,
       },
     ],
   };
@@ -90,17 +90,17 @@ export default async function ExperienceDetailPage({ params }: Props) {
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: `${experience.role} at ${experience.company}`,
-    url: `https://jameslatten.com/experience/${experience.slug}`,
+    url: `https://www.jameslatten.com/experience/${experience.slug}`,
     isPartOf: {
       "@type": "WebSite",
       name: "James Latten — Software Engineer",
-      url: "https://jameslatten.com",
+      url: "https://www.jameslatten.com",
     },
     breadcrumb: {
-      "@id": `https://jameslatten.com/experience/${experience.slug}#breadcrumb`,
+      "@id": `https://www.jameslatten.com/experience/${experience.slug}#breadcrumb`,
     },
     mainEntity: {
-      "@id": `https://jameslatten.com/experience/${experience.slug}#role`,
+      "@id": `https://www.jameslatten.com/experience/${experience.slug}#role`,
     },
   };
 
@@ -108,11 +108,11 @@ export default async function ExperienceDetailPage({ params }: Props) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify({ ...experienceSchema, "@id": `https://jameslatten.com/experience/${experience.slug}#role` }) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({ ...experienceSchema, "@id": `https://www.jameslatten.com/experience/${experience.slug}#role` }) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify({ ...experienceBreadcrumbSchema, "@id": `https://jameslatten.com/experience/${experience.slug}#breadcrumb` }) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({ ...experienceBreadcrumbSchema, "@id": `https://www.jameslatten.com/experience/${experience.slug}#breadcrumb` }) }}
       />
       <script
         type="application/ld+json"

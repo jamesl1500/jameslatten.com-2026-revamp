@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Experience",
   description: "A complete timeline of professional experience for James Latten.",
   alternates: {
-    canonical: "https://jameslatten.com/experience",
+    canonical: "https://www.jameslatten.com/experience",
   },
 };
 
@@ -24,7 +24,7 @@ export default function ExperiencePage() {
       itemListElement: experiences.map((experience, index) => ({
         "@type": "ListItem",
         position: index + 1,
-        url: `https://jameslatten.com/experience/${experience.slug}`,
+        url: `https://www.jameslatten.com/experience/${experience.slug}`,
         name: `${experience.role} at ${experience.company}`,
       })),
     },
@@ -37,13 +37,13 @@ export default function ExperiencePage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://jameslatten.com",
+        item: "https://www.jameslatten.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Experience",
-        item: "https://jameslatten.com/experience",
+        item: "https://www.jameslatten.com/experience",
       },
     ],
   };
@@ -51,17 +51,17 @@ export default function ExperiencePage() {
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: "Experience",
-    url: "https://jameslatten.com/experience",
+    url: "https://www.jameslatten.com/experience",
     isPartOf: {
       "@type": "WebSite",
       name: "James Latten — Software Engineer",
-      url: "https://jameslatten.com",
+      url: "https://www.jameslatten.com",
     },
     breadcrumb: {
-      "@id": "https://jameslatten.com/experience#breadcrumb",
+      "@id": "https://www.jameslatten.com/experience#breadcrumb",
     },
     mainEntity: {
-      "@id": "https://jameslatten.com/experience#collection",
+      "@id": "https://www.jameslatten.com/experience#collection",
     },
   };
 
@@ -69,11 +69,11 @@ export default function ExperiencePage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify({ ...experiencePageSchema, "@id": "https://jameslatten.com/experience#collection" }) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({ ...experiencePageSchema, "@id": "https://www.jameslatten.com/experience#collection" }) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify({ ...experienceBreadcrumbSchema, "@id": "https://jameslatten.com/experience#breadcrumb" }) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({ ...experienceBreadcrumbSchema, "@id": "https://www.jameslatten.com/experience#breadcrumb" }) }}
       />
       <script
         type="application/ld+json"

@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: entry.degree,
     description: `${entry.type} at ${entry.institution}`,
     alternates: {
-      canonical: `https://jameslatten.com/education/${entry.slug}`,
+      canonical: `https://www.jameslatten.com/education/${entry.slug}`,
     },
   };
 }
@@ -58,9 +58,9 @@ export default async function EducationDetailPage({ params }: Props) {
     creator: {
       "@type": "Person",
       name: "James Latten",
-      url: "https://jameslatten.com",
+      url: "https://www.jameslatten.com",
     },
-    url: `https://jameslatten.com/education/${entry.slug}`,
+    url: `https://www.jameslatten.com/education/${entry.slug}`,
   };
   const educationBreadcrumbSchema = {
     "@context": "https://schema.org",
@@ -70,19 +70,19 @@ export default async function EducationDetailPage({ params }: Props) {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://jameslatten.com",
+        item: "https://www.jameslatten.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Education",
-        item: "https://jameslatten.com/education",
+        item: "https://www.jameslatten.com/education",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: entry.degree,
-        item: `https://jameslatten.com/education/${entry.slug}`,
+        item: `https://www.jameslatten.com/education/${entry.slug}`,
       },
     ],
   };
@@ -90,17 +90,17 @@ export default async function EducationDetailPage({ params }: Props) {
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: entry.degree,
-    url: `https://jameslatten.com/education/${entry.slug}`,
+    url: `https://www.jameslatten.com/education/${entry.slug}`,
     isPartOf: {
       "@type": "WebSite",
       name: "James Latten — Software Engineer",
-      url: "https://jameslatten.com",
+      url: "https://www.jameslatten.com",
     },
     breadcrumb: {
-      "@id": `https://jameslatten.com/education/${entry.slug}#breadcrumb`,
+      "@id": `https://www.jameslatten.com/education/${entry.slug}#breadcrumb`,
     },
     mainEntity: {
-      "@id": `https://jameslatten.com/education/${entry.slug}#credential`,
+      "@id": `https://www.jameslatten.com/education/${entry.slug}#credential`,
     },
   };
 
@@ -108,11 +108,11 @@ export default async function EducationDetailPage({ params }: Props) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify({ ...educationSchema, "@id": `https://jameslatten.com/education/${entry.slug}#credential` }) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({ ...educationSchema, "@id": `https://www.jameslatten.com/education/${entry.slug}#credential` }) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify({ ...educationBreadcrumbSchema, "@id": `https://jameslatten.com/education/${entry.slug}#breadcrumb` }) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({ ...educationBreadcrumbSchema, "@id": `https://www.jameslatten.com/education/${entry.slug}#breadcrumb` }) }}
       />
       <script
         type="application/ld+json"
