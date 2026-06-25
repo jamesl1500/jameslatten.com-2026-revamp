@@ -13,8 +13,72 @@ export const metadata: Metadata = {
 };
 
 export default function EducationPage() {
+  const educationPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Education",
+    url: "https://jameslatten.com/education",
+    description: "Academic degrees and certificates earned by James Latten.",
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: education.map((entry, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        url: `https://jameslatten.com/education/${entry.slug}`,
+        name: entry.degree,
+      })),
+    },
+  };
+  const educationBreadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://jameslatten.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Education",
+        item: "https://jameslatten.com/education",
+      },
+    ],
+  };
+  const educationWebPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Education",
+    url: "https://jameslatten.com/education",
+    isPartOf: {
+      "@type": "WebSite",
+      name: "James Latten — Software Engineer",
+      url: "https://jameslatten.com",
+    },
+    breadcrumb: {
+      "@id": "https://jameslatten.com/education#breadcrumb",
+    },
+    mainEntity: {
+      "@id": "https://jameslatten.com/education#collection",
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({ ...educationPageSchema, "@id": "https://jameslatten.com/education#collection" }) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({ ...educationBreadcrumbSchema, "@id": "https://jameslatten.com/education#breadcrumb" }) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(educationWebPageSchema) }}
+      />
       <Nav />
       <main id="main-content">
         <section className="bg-white pt-36 pb-20 md:pt-44 md:pb-24 border-b border-black/10">

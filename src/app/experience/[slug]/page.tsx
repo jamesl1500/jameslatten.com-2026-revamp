@@ -40,9 +40,84 @@ export default async function ExperienceDetailPage({ params }: Props) {
 
   const index = experiences.findIndex((item) => item.slug === slug);
   const nextExperience = experiences[index + 1];
+  const experienceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Role",
+    roleName: experience.role,
+    description: experience.summary,
+    startDate: experience.period,
+    inDefinedTermSet: "Professional Experience",
+    inOrganization: {
+      "@type": "Organization",
+      name: experience.company,
+      location: {
+        "@type": "Place",
+        name: experience.location,
+      },
+    },
+    creator: {
+      "@type": "Person",
+      name: "James Latten",
+      url: "https://jameslatten.com",
+    },
+    url: `https://jameslatten.com/experience/${experience.slug}`,
+  };
+  const experienceBreadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://jameslatten.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Experience",
+        item: "https://jameslatten.com/experience",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: `${experience.role} at ${experience.company}`,
+        item: `https://jameslatten.com/experience/${experience.slug}`,
+      },
+    ],
+  };
+  const experienceWebPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: `${experience.role} at ${experience.company}`,
+    url: `https://jameslatten.com/experience/${experience.slug}`,
+    isPartOf: {
+      "@type": "WebSite",
+      name: "James Latten — Software Engineer",
+      url: "https://jameslatten.com",
+    },
+    breadcrumb: {
+      "@id": `https://jameslatten.com/experience/${experience.slug}#breadcrumb`,
+    },
+    mainEntity: {
+      "@id": `https://jameslatten.com/experience/${experience.slug}#role`,
+    },
+  };
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({ ...experienceSchema, "@id": `https://jameslatten.com/experience/${experience.slug}#role` }) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({ ...experienceBreadcrumbSchema, "@id": `https://jameslatten.com/experience/${experience.slug}#breadcrumb` }) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(experienceWebPageSchema) }}
+      />
       <Nav />
       <main id="main-content">
         <section className="bg-black text-white pt-36 pb-24 md:pt-44 md:pb-32">

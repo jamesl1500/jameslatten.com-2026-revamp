@@ -40,9 +40,84 @@ export default async function EducationDetailPage({ params }: Props) {
 
   const index = education.findIndex((item) => item.slug === slug);
   const nextEntry = education[index + 1];
+  const educationSchema = {
+    "@context": "https://schema.org",
+    "@type": "EducationalOccupationalCredential",
+    name: entry.degree,
+    description: `${entry.type} awarded by ${entry.institution}`,
+    credentialCategory: entry.type,
+    recognizedBy: {
+      "@type": "EducationalOrganization",
+      name: entry.institution,
+      location: {
+        "@type": "Place",
+        name: entry.location,
+      },
+    },
+    validFor: entry.year,
+    creator: {
+      "@type": "Person",
+      name: "James Latten",
+      url: "https://jameslatten.com",
+    },
+    url: `https://jameslatten.com/education/${entry.slug}`,
+  };
+  const educationBreadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://jameslatten.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Education",
+        item: "https://jameslatten.com/education",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: entry.degree,
+        item: `https://jameslatten.com/education/${entry.slug}`,
+      },
+    ],
+  };
+  const educationWebPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: entry.degree,
+    url: `https://jameslatten.com/education/${entry.slug}`,
+    isPartOf: {
+      "@type": "WebSite",
+      name: "James Latten — Software Engineer",
+      url: "https://jameslatten.com",
+    },
+    breadcrumb: {
+      "@id": `https://jameslatten.com/education/${entry.slug}#breadcrumb`,
+    },
+    mainEntity: {
+      "@id": `https://jameslatten.com/education/${entry.slug}#credential`,
+    },
+  };
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({ ...educationSchema, "@id": `https://jameslatten.com/education/${entry.slug}#credential` }) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({ ...educationBreadcrumbSchema, "@id": `https://jameslatten.com/education/${entry.slug}#breadcrumb` }) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(educationWebPageSchema) }}
+      />
       <Nav />
       <main id="main-content">
         <section className="bg-white pt-36 pb-24 md:pt-44 md:pb-32 border-b border-black/10">

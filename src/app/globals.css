@@ -35,21 +35,3 @@ body {
   background: #000000;
   color: #ffffff;
 }
-
-@keyframes slide-out {
-  from { transform: translateX(0); }
-  to { transform: translateX(-30%); }
-}
-
-@keyframes slide-in {
-  from { transform: translateX(100%); }
-  to { transform: translateX(0); }
-}
-
-::view-transition-old(root) {
-  animation: slide-out 300ms ease-in-out forwards;
-}
-
-::view-transition-new(root) {
-  animation: slide-in 300ms ease-in-out forwards;
-}

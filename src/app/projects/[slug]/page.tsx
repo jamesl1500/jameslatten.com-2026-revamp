@@ -45,9 +45,78 @@ export default async function ProjectPage({ params }: Props) {
 
   const index = projects.findIndex((p) => p.slug === slug);
   const id = String(index + 1).padStart(2, "0");
+  const projectSchema = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: project.title,
+    url: `https://jameslatten.com/projects/${project.slug}`,
+    description: project.tagline,
+    abstract: project.description.join(" "),
+    dateCreated: project.year,
+    creator: {
+      "@type": "Person",
+      name: "James Latten",
+      url: "https://jameslatten.com",
+    },
+    keywords: project.tags.join(", "),
+    sameAs: [project.links.live, project.links.github].filter(Boolean),
+  };
+  const projectBreadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://jameslatten.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Projects",
+        item: "https://jameslatten.com/projects",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: project.title,
+        item: `https://jameslatten.com/projects/${project.slug}`,
+      },
+    ],
+  };
+  const projectWebPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: project.title,
+    url: `https://jameslatten.com/projects/${project.slug}`,
+    isPartOf: {
+      "@type": "WebSite",
+      name: "James Latten — Software Engineer",
+      url: "https://jameslatten.com",
+    },
+    breadcrumb: {
+      "@id": `https://jameslatten.com/projects/${project.slug}#breadcrumb`,
+    },
+    mainEntity: {
+      "@id": `https://jameslatten.com/projects/${project.slug}#project`,
+    },
+  };
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({ ...projectSchema, "@id": `https://jameslatten.com/projects/${project.slug}#project` }) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({ ...projectBreadcrumbSchema, "@id": `https://jameslatten.com/projects/${project.slug}#breadcrumb` }) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(projectWebPageSchema) }}
+      />
       <Nav />
       <main id="main-content">
         {/* Hero */}

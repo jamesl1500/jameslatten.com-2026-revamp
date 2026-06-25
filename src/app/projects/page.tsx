@@ -13,8 +13,72 @@ export const metadata: Metadata = {
 };
 
 export default function ProjectsPage() {
+  const projectsPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Projects",
+    url: "https://jameslatten.com/projects",
+    description: "A curated list of software projects and case studies by James Latten.",
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: projects.map((project, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        url: `https://jameslatten.com/projects/${project.slug}`,
+        name: project.title,
+      })),
+    },
+  };
+  const projectsBreadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://jameslatten.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Projects",
+        item: "https://jameslatten.com/projects",
+      },
+    ],
+  };
+  const projectsWebPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Projects",
+    url: "https://jameslatten.com/projects",
+    isPartOf: {
+      "@type": "WebSite",
+      name: "James Latten — Software Engineer",
+      url: "https://jameslatten.com",
+    },
+    breadcrumb: {
+      "@id": "https://jameslatten.com/projects#breadcrumb",
+    },
+    mainEntity: {
+      "@id": "https://jameslatten.com/projects#collection",
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({ ...projectsPageSchema, "@id": "https://jameslatten.com/projects#collection" }) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({ ...projectsBreadcrumbSchema, "@id": "https://jameslatten.com/projects#breadcrumb" }) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(projectsWebPageSchema) }}
+      />
       <Nav />
       <main id="main-content">
         <section className="bg-white pt-36 pb-20 md:pt-44 md:pb-24 border-b border-black/10">

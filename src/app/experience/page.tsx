@@ -13,8 +13,72 @@ export const metadata: Metadata = {
 };
 
 export default function ExperiencePage() {
+  const experiencePageSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Experience",
+    url: "https://jameslatten.com/experience",
+    description: "A complete timeline of professional experience for James Latten.",
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: experiences.map((experience, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        url: `https://jameslatten.com/experience/${experience.slug}`,
+        name: `${experience.role} at ${experience.company}`,
+      })),
+    },
+  };
+  const experienceBreadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://jameslatten.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Experience",
+        item: "https://jameslatten.com/experience",
+      },
+    ],
+  };
+  const experienceWebPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Experience",
+    url: "https://jameslatten.com/experience",
+    isPartOf: {
+      "@type": "WebSite",
+      name: "James Latten — Software Engineer",
+      url: "https://jameslatten.com",
+    },
+    breadcrumb: {
+      "@id": "https://jameslatten.com/experience#breadcrumb",
+    },
+    mainEntity: {
+      "@id": "https://jameslatten.com/experience#collection",
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({ ...experiencePageSchema, "@id": "https://jameslatten.com/experience#collection" }) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({ ...experienceBreadcrumbSchema, "@id": "https://jameslatten.com/experience#breadcrumb" }) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(experienceWebPageSchema) }}
+      />
       <Nav />
       <main id="main-content">
         <section className="bg-black text-white pt-36 pb-20 md:pt-44 md:pb-24 border-b border-white/10">
