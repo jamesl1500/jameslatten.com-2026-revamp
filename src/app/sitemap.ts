@@ -1,4 +1,6 @@
 import type { MetadataRoute } from "next";
+import { experiences } from "@/lib/experience";
+import { education } from "@/lib/education";
 import { projects } from "@/lib/projects";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -10,6 +12,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified,
     changeFrequency: "monthly" as const,
     priority: 0.8,
+  }));
+
+  const experienceRoutes: MetadataRoute.Sitemap = experiences.map((experience) => ({
+    url: `${baseUrl}/experience/${experience.slug}`,
+    lastModified,
+    changeFrequency: "monthly" as const,
+    priority: 0.75,
+  }));
+
+  const educationRoutes: MetadataRoute.Sitemap = education.map((entry) => ({
+    url: `${baseUrl}/education/${entry.slug}`,
+    lastModified,
+    changeFrequency: "yearly" as const,
+    priority: 0.65,
   }));
 
   return [
@@ -38,6 +54,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     },
     {
+      url: `${baseUrl}/projects`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/experience`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/education`,
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.75,
+    },
+    {
       url: `${baseUrl}/#skills`,
       lastModified,
       changeFrequency: "monthly",
@@ -56,5 +90,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     ...projectRoutes,
+    ...experienceRoutes,
+    ...educationRoutes,
   ];
 }

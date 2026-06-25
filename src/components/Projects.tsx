@@ -109,6 +109,16 @@ export default function Projects() {
             />
           ))}
         </div>
+
+        <div className="mt-14">
+          <Link
+            href="/projects"
+            className="inline-flex items-center gap-2 text-xs tracking-widest uppercase px-8 py-4 border border-black/25 text-black/70 hover:text-black hover:border-black transition-colors"
+          >
+            View All Projects
+            <span>&rarr;</span>
+          </Link>
+        </div>
       </div>
     </section>
   );

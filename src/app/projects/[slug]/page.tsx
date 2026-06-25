@@ -55,7 +55,7 @@ export default async function ProjectPage({ params }: Props) {
           <div className="max-w-screen-xl mx-auto px-6 md:px-12">
             {/* Back link */}
             <Link
-              href="/#projects"
+              href="/projects"
               className="inline-flex items-center gap-2 text-xs tracking-widest uppercase text-white/35 hover:text-white transition-colors mb-16"
             >
               <span>&larr;</span>

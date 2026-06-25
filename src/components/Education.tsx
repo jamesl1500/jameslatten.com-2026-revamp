@@ -2,110 +2,8 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-
-const education = [
-  {
-    degree: "Bachelor of Science, Psychology",
-    institution: "Western Governors University",
-    location: "Salt Lake City, Utah",
-    year: "2025",
-    type: "Degree" as const,
-    highlights: [] as string[],
-  },
-  {
-    degree: "Associates of Applied Business, Programming and Development",
-    institution: "Cuyahoga Community College",
-    location: "Cleveland, OH",
-    year: "2026",
-    type: "Degree" as const,
-    highlights: [
-      "Advanced Data Structures and Algorithms",
-      "Networking Fundamentals and servers",
-      "Distributed systems with modern and legacy technologies",
-      "PHP, Java, C#, HTML, CSS, and React",
-      "Full Stack Development",
-    ],
-  },
-  {
-    degree: "Associates of Arts",
-    institution: "Cuyahoga Community College",
-    location: "Cleveland, OH",
-    year: "2022",
-    type: "Degree" as const,
-    highlights: [] as string[],
-  },
-  {
-    degree: "Certificate in IT-Programming & Development",
-    institution: "Cuyahoga Community College",
-    location: "Cleveland, OH",
-    year: "2026",
-    type: "Certificate" as const,
-    highlights: [
-      "PHP, Java, C#, HTML, CSS, and React",
-      "Full Stack Development",
-      "Computer Science and Data Structures and Algorithms",
-    ],
-  },
-  {
-    degree: "Certificate in IT-Web Application Development",
-    institution: "Cuyahoga Community College",
-    location: "Cleveland, OH",
-    year: "2026",
-    type: "Certificate" as const,
-    highlights: [
-      "PHP, Java, C#, HTML, CSS, and React",
-      "Full Stack Development",
-      "Computer Science and Data Structures and Algorithms",
-    ],
-  },
-  {
-    degree: "Certificate in .NET Programming",
-    institution: "Cuyahoga Community College",
-    location: "Cleveland, OH",
-    year: "2026",
-    type: "Certificate" as const,
-    highlights: [
-      "C#, ASP.NET, and Blazor",
-      "Full Stack Development with .NET technologies",
-      "Computer Science and Data Structures and Algorithms",
-    ],
-  },
-  {
-    degree: "Certificate in Web Programming Fundamentals",
-    institution: "Lorain County Community College",
-    location: "Elyria, OH",
-    year: "2023",
-    type: "Certificate" as const,
-    highlights: [
-      "HTML, CSS, JavaScript, and PHP",
-      "Web Development and Design",
-      "Back-end development focus",
-    ],
-  },
-  {
-    degree: "Certificate in Web Design Fundamentals",
-    institution: "Lorain County Community College",
-    location: "Elyria, OH",
-    year: "2023",
-    type: "Certificate" as const,
-    highlights: [
-      "HTML, CSS, and JavaScript",
-      "Web Design and Front-End Development",
-    ],
-  },
-  {
-    degree: "Certificate in Software Development",
-    institution: "Lorain County Community College",
-    location: "Elyria, Ohio",
-    year: "2023",
-    type: "Certificate" as const,
-    highlights: [
-      "Computer Science and Data Structures and Algorithms",
-      "PHP, Java, C#, and Python",
-      "Full Stack Development",
-    ],
-  },
-];
+import Link from "next/link";
+import { education } from "@/lib/education";
 
 export default function Education() {
   const ref = useRef<HTMLDivElement>(null);
@@ -174,6 +72,16 @@ export default function Education() {
               )}
             </motion.div>
           ))}
+        </div>
+
+        <div className="mt-14">
+          <Link
+            href="/education"
+            className="inline-flex items-center gap-2 text-xs tracking-widest uppercase px-8 py-4 border border-white/25 text-white/80 hover:text-white hover:border-white transition-colors"
+          >
+            View Full Education
+            <span>&rarr;</span>
+          </Link>
         </div>
       </div>
     </section>

@@ -2,54 +2,8 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-
-const experiences = [
-  {
-    id: "01",
-    role: "Technology Development Analyst / Associate",
-    company: "PNC Bank",
-    location: "Strongsville, OH",
-    period: "Feb 2026 — Present",
-    highlights: [
-      "Participating in the Technology Development Program focused on Software Engineering in banking.",
-      "Working on highly complex distributed systems serving millions of customers daily.",
-      "Leveraged React, Angular, Vue, Next.js, Java, TypeScript, and JavaScript to deliver modern, high-impact features.",
-      "Improved system performance by 30% and reduced processing time by 15% through optimised data structures and algorithms.",
-      "Led complex projects across multiple teams, delivering modern and high-impact solutions.",
-      "Integrated third-party APIs and leveraged AI/ML tools for scalable, intelligent solutions.",
-    ],
-  },
-  {
-    id: "02",
-    role: "Web Developer",
-    company: "American Marketing Association",
-    location: "Chicago, IL",
-    period: "Oct 2022 — Oct 2025",
-    highlights: [
-      "Built and maintained large-scale WordPress and WooCommerce systems used by thousands of customers.",
-      "Engineered new features and functionality that boosted revenue by 25%.",
-      "Leveraged HTML, CSS, TypeScript, JavaScript, and PHP for frontend and backend development.",
-      "Created and integrated third-party APIs using JavaScript and PHP.",
-      "Used AWS to build scalable server infrastructure running web applications, APIs, and microservices.",
-      "Applied AI and Machine Learning to develop complex, scalable solutions.",
-    ],
-  },
-  {
-    id: "03",
-    role: "Software Engineer",
-    company: "Self-Employed",
-    location: "Lorain, OH",
-    period: "Feb 2017 — Oct 2022",
-    highlights: [
-      "Designed and delivered custom web applications using React, Node.js, and AWS.",
-      "Achieved a 90% client retention rate and increased client productivity by 30%.",
-      "Implemented RESTful APIs and cloud-based architectures, cutting server costs by 25%.",
-      "Specialised in pixel-perfect frontend development with HTML, CSS, SASS, and JavaScript/TypeScript.",
-      "Built robust database systems using MySQL and PostgreSQL with complex SQL data flows.",
-      "Deployed scalable server infrastructure on AWS for clients across various industries.",
-    ],
-  },
-];
+import Link from "next/link";
+import { experiences } from "@/lib/experience";
 
 type Experience = (typeof experiences)[0];
 
@@ -148,6 +102,16 @@ export default function Experience() {
               isParentInView={isInView}
             />
           ))}
+        </div>
+
+        <div className="mt-14">
+          <Link
+            href="/experience"
+            className="inline-flex items-center gap-2 text-xs tracking-widest uppercase px-8 py-4 border border-white/25 text-white/80 hover:text-white hover:border-white transition-colors"
+          >
+            View Full Experience
+            <span>&rarr;</span>
+          </Link>
         </div>
       </div>
     </section>
