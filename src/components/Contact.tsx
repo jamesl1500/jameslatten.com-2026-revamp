@@ -13,8 +13,8 @@ const contactDetails = [
   },
   {
     label: "Phone",
-    value: "(216) 889-7822",
-    href: "tel:+12168897822",
+    value: "(440) 921-8245",
+    href: "tel:+14409218245",
     external: false,
   },
   {

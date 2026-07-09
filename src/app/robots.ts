@@ -8,7 +8,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
       },
     ],
-    sitemap: "https://jameslatten.com/sitemap.xml",
-    host: "https://jameslatten.com",
+    sitemap: "https://www.jameslatten.com/sitemap.xml",
+    host: "https://www.jameslatten.com",
   };
 }

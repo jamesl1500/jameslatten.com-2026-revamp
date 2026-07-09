@@ -4,8 +4,8 @@ import { education } from "@/lib/education";
 import { projects } from "@/lib/projects";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://jameslatten.com";
-  const lastModified = new Date("2026-06-12");
+  const baseUrl = "https://www.jameslatten.com";
+  const lastModified = new Date("2026-07-09");
 
   const projectRoutes: MetadataRoute.Sitemap = projects.map((p) => ({
     url: `${baseUrl}/projects/${p.slug}`,

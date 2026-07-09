@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Projects",
   description: "A curated list of software projects and case studies by James Latten.",
   alternates: {
-    canonical: "https://jameslatten.com/projects",
+    canonical: "https://www.jameslatten.com/projects",
   },
 };
 
@@ -17,14 +17,14 @@ export default function ProjectsPage() {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: "Projects",
-    url: "https://jameslatten.com/projects",
+    url: "https://www.jameslatten.com/projects",
     description: "A curated list of software projects and case studies by James Latten.",
     mainEntity: {
       "@type": "ItemList",
       itemListElement: projects.map((project, index) => ({
         "@type": "ListItem",
         position: index + 1,
-        url: `https://jameslatten.com/projects/${project.slug}`,
+        url: `https://www.jameslatten.com/projects/${project.slug}`,
         name: project.title,
       })),
     },
@@ -37,13 +37,13 @@ export default function ProjectsPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://jameslatten.com",
+        item: "https://www.jameslatten.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Projects",
-        item: "https://jameslatten.com/projects",
+        item: "https://www.jameslatten.com/projects",
       },
     ],
   };
@@ -51,17 +51,17 @@ export default function ProjectsPage() {
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: "Projects",
-    url: "https://jameslatten.com/projects",
+    url: "https://www.jameslatten.com/projects",
     isPartOf: {
       "@type": "WebSite",
       name: "James Latten — Software Engineer",
-      url: "https://jameslatten.com",
+      url: "https://www.jameslatten.com",
     },
     breadcrumb: {
-      "@id": "https://jameslatten.com/projects#breadcrumb",
+      "@id": "https://www.jameslatten.com/projects#breadcrumb",
     },
     mainEntity: {
-      "@id": "https://jameslatten.com/projects#collection",
+      "@id": "https://www.jameslatten.com/projects#collection",
     },
   };
 
@@ -69,11 +69,11 @@ export default function ProjectsPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify({ ...projectsPageSchema, "@id": "https://jameslatten.com/projects#collection" }) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({ ...projectsPageSchema, "@id": "https://www.jameslatten.com/projects#collection" }) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify({ ...projectsBreadcrumbSchema, "@id": "https://jameslatten.com/projects#breadcrumb" }) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({ ...projectsBreadcrumbSchema, "@id": "https://www.jameslatten.com/projects#breadcrumb" }) }}
       />
       <script
         type="application/ld+json"

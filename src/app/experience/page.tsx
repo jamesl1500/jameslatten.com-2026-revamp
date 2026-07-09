@@ -17,7 +17,7 @@ export default function ExperiencePage() {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: "Experience",
-    url: "https://jameslatten.com/experience",
+    url: "https://www.jameslatten.com/experience",
     description: "A complete timeline of professional experience for James Latten.",
     mainEntity: {
       "@type": "ItemList",
