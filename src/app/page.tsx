@@ -69,7 +69,7 @@ const personSchema = {
     "Machine Learning",
   ],
   sameAs: [
-    "https://github.com/jameslattenjr",
+    "https://github.com/jamesl1500",
     "https://www.linkedin.com/in/jameslattenjr",
     "https://www.foundryframe.com",
   ],

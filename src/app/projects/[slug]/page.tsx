@@ -25,12 +25,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: project.title,
     description: project.tagline,
     alternates: {
-      canonical: `https://jameslatten.com/projects/${project.slug}`,
+      canonical: `https://www.jameslatten.com/projects/${project.slug}`,
     },
     openGraph: {
       title: `${project.title} — James Latten`,
       description: project.tagline,
-      url: `https://jameslatten.com/projects/${project.slug}`,
+      url: `https://www.jameslatten.com/projects/${project.slug}`,
     },
   };
 }
@@ -49,14 +49,14 @@ export default async function ProjectPage({ params }: Props) {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
     name: project.title,
-    url: `https://jameslatten.com/projects/${project.slug}`,
+    url: `https://www.jameslatten.com/projects/${project.slug}`,
     description: project.tagline,
     abstract: project.description.join(" "),
     dateCreated: project.year,
     creator: {
       "@type": "Person",
       name: "James Latten",
-      url: "https://jameslatten.com",
+      url: "https://www.jameslatten.com",
     },
     keywords: project.tags.join(", "),
     sameAs: [project.links.live, project.links.github].filter(Boolean),
@@ -69,19 +69,19 @@ export default async function ProjectPage({ params }: Props) {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://jameslatten.com",
+        item: "https://www.jameslatten.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Projects",
-        item: "https://jameslatten.com/projects",
+        item: "https://www.jameslatten.com/projects",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: project.title,
-        item: `https://jameslatten.com/projects/${project.slug}`,
+        item: `https://www.jameslatten.com/projects/${project.slug}`,
       },
     ],
   };
@@ -89,17 +89,17 @@ export default async function ProjectPage({ params }: Props) {
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: project.title,
-    url: `https://jameslatten.com/projects/${project.slug}`,
+    url: `https://www.jameslatten.com/projects/${project.slug}`,
     isPartOf: {
       "@type": "WebSite",
       name: "James Latten — Software Engineer",
-      url: "https://jameslatten.com",
+      url: "https://www.jameslatten.com",
     },
     breadcrumb: {
-      "@id": `https://jameslatten.com/projects/${project.slug}#breadcrumb`,
+      "@id": `https://www.jameslatten.com/projects/${project.slug}#breadcrumb`,
     },
     mainEntity: {
-      "@id": `https://jameslatten.com/projects/${project.slug}#project`,
+      "@id": `https://www.jameslatten.com/projects/${project.slug}#project`,
     },
   };
 
@@ -107,11 +107,11 @@ export default async function ProjectPage({ params }: Props) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify({ ...projectSchema, "@id": `https://jameslatten.com/projects/${project.slug}#project` }) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({ ...projectSchema, "@id": `https://www.jameslatten.com/projects/${project.slug}#project` }) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify({ ...projectBreadcrumbSchema, "@id": `https://jameslatten.com/projects/${project.slug}#breadcrumb` }) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({ ...projectBreadcrumbSchema, "@id": `https://www.jameslatten.com/projects/${project.slug}#breadcrumb` }) }}
       />
       <script
         type="application/ld+json"

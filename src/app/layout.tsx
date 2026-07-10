@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
 
   description:
-    "James Latten is a full-stack Software Engineer based in Lorain, Ohio with 4+ years of experience building scalable React, TypeScript, and cloud-based applications. Currently a Technology Development Analyst at PNC Bank. Open to consulting and engineering discussions.",
+    "James Latten is a full-stack Software Engineer with 4+ years building React, TypeScript, and cloud-based systems. Based in Lorain, Ohio.",
 
   keywords: [
     // Name / identity
@@ -62,7 +62,6 @@ export const metadata: Metadata = {
     "JavaScript",
     "PHP",
     "WordPress",
-    "WordPress Developer",
     "Laravel",
     "Laravel Developer",
     "Shopify",
@@ -90,34 +89,14 @@ export const metadata: Metadata = {
     "Next.js Developer Ohio",
     "JavaScript Developer Ohio",
     "PHP Developer Ohio",
-    // Skills + location (high recruiter intent)
-    "React Developer Ohio",
-    "TypeScript Developer Ohio",
-    "Next.js Developer Ohio",
-    "JavaScript Developer Ohio",
-    "PHP Developer Ohio",
-    "Java Developer Ohio",
-    "AWS Developer Ohio",
-    "Node.js Developer Ohio",
-    "Software Engineer Ohio",
-    "Full Stack Developer Ohio",
-    "Web Developer Ohio",
-    "WordPress Developer Ohio",
-    // Technology (what recruiters search for)
-    "React Developer Ohio",
-    "React Developer for hire",
-    "TypeScript Developer",
-    "Next.js Developer",
-    "JavaScript Developer Ohio",
-    "PHP Developer Ohio",
     "Java Developer Ohio",
     "AWS Developer Ohio",
     "Node.js Developer Ohio",
     "WordPress Developer Ohio",
-    "Software Engineer Ohio",
     // Client-intent searches
     "Hire Software Engineer Ohio",
     "Hire React Developer",
+    "React Developer for hire",
     "Freelance Web Developer Ohio",
     "Custom Web Application Developer",
     "REST API Developer Ohio",
@@ -167,15 +146,9 @@ export const metadata: Metadata = {
     title: "James Latten — Software Engineer | React, TypeScript, Next.js",
     description:
       "Full-stack Software Engineer with 4+ years building React, TypeScript, and cloud-based systems. Based in Lorain, Ohio.",
-    creator: "@jameslattenjr",
-    site: "@jameslattenjr",
   },
 
   category: "technology",
-
-  verification: {
-    google: "your-google-search-console-token",
-  },
 };
 
 export default function RootLayout({
@@ -186,6 +159,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
       <body className="bg-white text-black overflow-x-hidden">

@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 
 const stats = [
@@ -53,26 +52,28 @@ export default function Hero() {
             </motion.p>
           </div>
 
-          {/* Headline line one */}
-          <div className="overflow-hidden">
-            <motion.h1
-              variants={lineVariants}
-              className="text-[clamp(3.5rem,11vw,10rem)] font-black leading-[0.9] tracking-[-0.03em] text-white"
-            >
-              James
-            </motion.h1>
-          </div>
+          {/* Headline */}
+          <h1 className="contents">
+            {/* Headline line one */}
+            <div className="overflow-hidden">
+              <motion.span
+                variants={lineVariants}
+                className="block text-[clamp(3.5rem,11vw,10rem)] font-black leading-[0.9] tracking-[-0.03em] text-white"
+              >
+                James
+              </motion.span>
+            </div>
 
-          {/* Headline line two */}
-          <div className="overflow-hidden mb-12">
-            <motion.h1
-              variants={lineVariants}
-              aria-hidden="true"
-              className="text-[clamp(3.5rem,11vw,10rem)] font-black leading-[0.9] tracking-[-0.03em] text-white/20"
-            >
-              Latten.
-            </motion.h1>
-          </div>
+            {/* Headline line two */}
+            <div className="overflow-hidden mb-12">
+              <motion.span
+                variants={lineVariants}
+                className="block text-[clamp(3.5rem,11vw,10rem)] font-black leading-[0.9] tracking-[-0.03em] text-white/20"
+              >
+                Latten.
+              </motion.span>
+            </div>
+          </h1>
 
           {/* Description and CTAs */}
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">

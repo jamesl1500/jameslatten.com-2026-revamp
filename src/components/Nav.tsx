@@ -40,6 +40,12 @@ export default function Nav() {
 
   return (
     <>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:bg-black focus:text-white focus:px-5 focus:py-3 focus:text-xs focus:tracking-widest focus:uppercase"
+      >
+        Skip to main content
+      </a>
       <motion.header
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -71,12 +77,21 @@ export default function Nav() {
           </nav>
 
           {/* Desktop CTA */}
-          <Link
-            href="/#contact"
-            className="hidden md:block text-xs tracking-widest uppercase px-5 py-2.5 border border-black hover:bg-black hover:text-white transition-colors"
-          >
-            Hire Me
-          </Link>
+          <div className="hidden md:flex items-center gap-4">
+            <a
+              href="/james-latten-resume.docx"
+              download
+              className="text-xs tracking-widest uppercase hover:opacity-40 transition-opacity"
+            >
+              Resume
+            </a>
+            <Link
+              href="/#contact"
+              className="text-xs tracking-widest uppercase px-5 py-2.5 border border-black hover:bg-black hover:text-white transition-colors"
+            >
+              Hire Me
+            </Link>
+          </div>
 
           {/* Mobile hamburger */}
           <button
@@ -146,6 +161,14 @@ export default function Nav() {
                 onClick={closeMenu}
               >
                 hello@jameslatten.com
+              </a>
+              <a
+                href="/james-latten-resume.docx"
+                download
+                className="text-sm text-white/60 hover:text-white transition-colors mt-1"
+                onClick={closeMenu}
+              >
+                Download Resume
               </a>
             </motion.div>
           </motion.div>
