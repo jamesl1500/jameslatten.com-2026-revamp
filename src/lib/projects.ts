@@ -115,6 +115,24 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: "syllaplan",
+    title: "Syllaplan",
+    tagline: "AI-powered syllabus parser that turns course PDFs into calendars.",
+    description: [
+      "Built Syllaplan, a free tool that automates the tedious process of turning course syllabi into organized calendars and task lists for students juggling multiple classes.",
+      "Students upload a syllabus PDF and the tool uses Claude (Anthropic's AI) to extract exam dates, assignment due dates, and key deadlines via natural language processing — working across any school or course format.",
+      "Designed a human-in-the-loop review step so nothing saves automatically: extracted dates are surfaced for the student to review and edit before confirming them to their calendar, prioritizing accuracy over blind automation.",
+      "Built the account system and calendar/task views to consolidate every class into a single source of truth, with privacy controls around stored syllabus data.",
+    ],
+    year: "2026",
+    role: "Founder & Full-Stack Developer",
+    tags: ["React", "TypeScript", "Node.js", "Vercel", "Supabase", "AI/ML", "Claude API"],
+    links: {
+      live: "https://www.syllaplan.com",
+      github: "https://github.com/jamesl1500/syllaplan.com",
+    },
+  },
+  {
     slug: "cardcrafty",
     title: "Cardcrafty",
     tagline: "Flashcard web app for students, built with React and Supabase.",
