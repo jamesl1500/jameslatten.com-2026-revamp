@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
 
   description:
-    "James Latten is a full-stack Software Engineer with 4+ years building React, TypeScript, and cloud-based systems. Based in Lorain, Ohio.",
+    "James Latten is a full-stack Software Engineer with 4+ years building React, TypeScript, and cloud-based systems. Based in Sheffield Lake, Ohio.",
 
   keywords: [
     // Name / identity
@@ -132,7 +132,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "James Latten — Software Engineer | React, TypeScript, Next.js",
     description:
-      "Full-stack Software Engineer with 4+ years building scalable React, TypeScript, and cloud-based systems. Currently at PNC Bank. Based in Lorain, Ohio.",
+      "Full-stack Software Engineer with 4+ years building scalable React, TypeScript, and cloud-based systems. Currently at PNC Bank. Based in Sheffield Lake, Ohio.",
     url: "https://www.jameslatten.com",
     siteName: "James Latten",
     locale: "en_US",
@@ -146,7 +146,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "James Latten — Software Engineer | React, TypeScript, Next.js",
     description:
-      "Full-stack Software Engineer with 4+ years building React, TypeScript, and cloud-based systems. Based in Lorain, Ohio.",
+      "Full-stack Software Engineer with 4+ years building React, TypeScript, and cloud-based systems. Based in Sheffield Lake, Ohio.",
   },
 
   category: "technology",

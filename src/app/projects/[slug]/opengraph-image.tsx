@@ -17,7 +17,7 @@ export default async function Image({
   const { slug } = await params;
   const project = getProject(slug);
   const title = project?.title ?? "James Latten";
-  const tagline = project?.tagline ?? "Software Engineer — Lorain, Ohio";
+  const tagline = project?.tagline ?? "Software Engineer — Sheffield Lake, Ohio";
   const tags = project?.tags.slice(0, 5).join("  ·  ") ?? "";
 
   return new ImageResponse(

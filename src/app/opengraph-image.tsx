@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "James Latten — Software Engineer | Lorain, Ohio";
+export const alt = "James Latten — Software Engineer | Sheffield Lake, Ohio";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -29,7 +29,7 @@ export default function Image() {
             display: "flex",
           }}
         >
-          SOFTWARE ENGINEER &mdash; LORAIN, OHIO
+          SOFTWARE ENGINEER &mdash; Sheffield Lake, Ohio
         </div>
 
         {/* Name */}

@@ -21,7 +21,7 @@ const personSchema = {
   image: "https://www.jameslatten.com/opengraph-image",
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Lorain",
+    addressLocality: "Sheffield Lake",
     addressRegion: "OH",
     addressCountry: "US",
   },
@@ -81,7 +81,7 @@ const websiteSchema = {
   name: "James Latten — Software Engineer",
   url: "https://www.jameslatten.com",
   description:
-    "Portfolio website of James Latten, a full-stack Software Engineer based in Lorain, Ohio.",
+    "Portfolio website of James Latten, a full-stack Software Engineer based in Sheffield Lake, Ohio.",
   author: {
     "@type": "Person",
     name: "James Latten",

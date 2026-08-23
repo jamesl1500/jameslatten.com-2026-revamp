@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const stats = [
   { value: "4+", label: "Years Experience" },
-  { value: "3", label: "Companies" },
+  { value: "2", label: "Companies" },
   { value: "30%", label: "Performance Gains" },
   { value: "90%", label: "Client Retention" },
 ];
@@ -49,7 +49,7 @@ export default function Hero() {
               className="flex flex-wrap items-center gap-3"
             >
               <p className="text-xs tracking-widest uppercase text-white/40">
-                Software Engineer &mdash; Lorain, Ohio
+                Software Engineer &mdash; Sheffield Lake, Ohio
               </p>
               <span className="inline-flex items-center gap-2 text-[11px] tracking-widest uppercase text-white/70 border border-white/20 rounded-full px-3 py-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />

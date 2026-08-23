@@ -21,7 +21,7 @@ const contactDetails = [
   },
   {
     label: "Location",
-    value: "Lorain, Ohio",
+    value: "Sheffield Lake, Ohio",
     href: null,
     external: false,
   },
