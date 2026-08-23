@@ -44,12 +44,18 @@ export default function Hero() {
         >
           {/* Label */}
           <div className="overflow-hidden mb-6">
-            <motion.p
+            <motion.div
               variants={lineVariants}
-              className="text-xs tracking-widest uppercase text-white/40"
+              className="flex flex-wrap items-center gap-3"
             >
-              Software Engineer &mdash; Lorain, Ohio
-            </motion.p>
+              <p className="text-xs tracking-widest uppercase text-white/40">
+                Software Engineer &mdash; Lorain, Ohio
+              </p>
+              <span className="inline-flex items-center gap-2 text-[11px] tracking-widest uppercase text-white/70 border border-white/20 rounded-full px-3 py-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                Open to New Opportunities
+              </span>
+            </motion.div>
           </div>
 
           {/* Headline */}

@@ -14,7 +14,7 @@ const personSchema = {
   name: "James Latten",
   url: "https://www.jameslatten.com",
   email: "hello@jameslatten.com",
-  telephone: "+14409218245",
+  telephone: "+12168897822",
   jobTitle: "Software Engineer",
   description:
     "Full-stack Software Engineer with 4+ years of experience building scalable web applications and cloud-based systems using React, TypeScript, PHP, AWS, and more.",

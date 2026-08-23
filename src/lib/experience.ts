@@ -13,7 +13,7 @@ export const experiences: Experience[] = [
   {
     id: "01",
     slug: "pnc-bank",
-    role: "Technology Development Analyst / Associate",
+    role: "Software Engineer",
     company: "PNC Bank",
     location: "Strongsville, OH",
     period: "Feb 2026 - Present",
@@ -44,24 +44,6 @@ export const experiences: Experience[] = [
       "Created and integrated third-party APIs using JavaScript and PHP.",
       "Used AWS to build scalable server infrastructure running web applications, APIs, and microservices.",
       "Applied AI and Machine Learning to develop complex, scalable solutions.",
-    ],
-  },
-  {
-    id: "03",
-    slug: "self-employed",
-    role: "Software Engineer",
-    company: "Self-Employed",
-    location: "Lorain, OH",
-    period: "Feb 2017 - Oct 2022",
-    summary:
-      "Delivered full-stack web applications and cloud solutions for clients across industries with strong retention outcomes.",
-    highlights: [
-      "Designed and delivered custom web applications using React, Node.js, and AWS.",
-      "Achieved a 90% client retention rate and increased client productivity by 30%.",
-      "Implemented RESTful APIs and cloud-based architectures, cutting server costs by 25%.",
-      "Specialised in pixel-perfect frontend development with HTML, CSS, SASS, and JavaScript/TypeScript.",
-      "Built robust database systems using MySQL and PostgreSQL with complex SQL data flows.",
-      "Deployed scalable server infrastructure on AWS for clients across various industries.",
     ],
   },
 ];

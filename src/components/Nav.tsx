@@ -79,8 +79,9 @@ export default function Nav() {
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-4">
             <a
-              href="/james-latten-resume.docx"
-              download
+              href="/james-latten-resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-xs tracking-widest uppercase hover:opacity-40 transition-opacity"
             >
               Resume
@@ -163,12 +164,13 @@ export default function Nav() {
                 hello@jameslatten.com
               </a>
               <a
-                href="/james-latten-resume.docx"
-                download
+                href="/james-latten-resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-sm text-white/60 hover:text-white transition-colors mt-1"
                 onClick={closeMenu}
               >
-                Download Resume
+                View Resume
               </a>
             </motion.div>
           </motion.div>

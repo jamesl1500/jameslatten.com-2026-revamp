@@ -1,8 +1,10 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
+
+type FormStatus = "idle" | "submitting" | "success" | "error";
 
 const contactDetails = [
   {
@@ -13,8 +15,8 @@ const contactDetails = [
   },
   {
     label: "Phone",
-    value: "(440) 921-8245",
-    href: "tel:+14409218245",
+    value: "(216) 889-7822",
+    href: "tel:+12168897822",
     external: false,
   },
   {
@@ -30,6 +32,121 @@ const contactDetails = [
     external: true,
   },
 ];
+
+function ContactForm() {
+  const [status, setStatus] = useState<FormStatus>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("submitting");
+    setErrorMessage("");
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+
+    if (!accessKey) {
+      setStatus("error");
+      setErrorMessage(
+        "Form isn't configured yet — email hello@jameslatten.com directly."
+      );
+      return;
+    }
+
+    formData.append("access_key", accessKey);
+    formData.append("subject", "New message from jameslatten.com");
+    formData.append("from_name", "jameslatten.com contact form");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: formData,
+      });
+      const result = await response.json();
+
+      if (result.success) {
+        setStatus("success");
+        form.reset();
+      } else {
+        setStatus("error");
+        setErrorMessage(result.message || "Something went wrong. Please try again.");
+      }
+    } catch {
+      setStatus("error");
+      setErrorMessage("Network error — please try again or email directly.");
+    }
+  }
+
+  if (status === "success") {
+    return (
+      <div className="border border-black/15 px-8 py-10 flex flex-col gap-2">
+        <p className="text-sm font-bold">Message sent.</p>
+        <p className="text-sm text-black/60">
+          Thanks for reaching out — I&apos;ll reply as soon as I can.
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="flex flex-col gap-5 max-w-xl">
+      <div className="grid sm:grid-cols-2 gap-5">
+        <div className="flex flex-col gap-2">
+          <label htmlFor="name" className="text-xs tracking-widest uppercase text-black/40">
+            Name
+          </label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            required
+            className="border border-black/15 px-4 py-3 text-sm focus:outline-none focus:border-black transition-colors"
+          />
+        </div>
+        <div className="flex flex-col gap-2">
+          <label htmlFor="email" className="text-xs tracking-widest uppercase text-black/40">
+            Email
+          </label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            className="border border-black/15 px-4 py-3 text-sm focus:outline-none focus:border-black transition-colors"
+          />
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <label htmlFor="message" className="text-xs tracking-widest uppercase text-black/40">
+          Message
+        </label>
+        <textarea
+          id="message"
+          name="message"
+          rows={4}
+          required
+          placeholder="Tell me about the role or project..."
+          className="border border-black/15 px-4 py-3 text-sm focus:outline-none focus:border-black transition-colors resize-none"
+        />
+      </div>
+
+      {status === "error" && (
+        <p className="text-sm text-red-600">{errorMessage}</p>
+      )}
+
+      <button
+        type="submit"
+        disabled={status === "submitting"}
+        className="self-start text-xs tracking-widest uppercase px-10 py-5 bg-black text-white hover:bg-black/85 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        {status === "submitting" ? "Sending..." : "Send Message"}
+      </button>
+    </form>
+  );
+}
 
 export default function Contact() {
   const ref = useRef<HTMLDivElement>(null);
@@ -49,7 +166,7 @@ export default function Contact() {
         </motion.p>
 
         {/* Big CTA block */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-10 pb-20 border-b border-black/10">
+        <div className="flex flex-col gap-12 pb-20 border-b border-black/10">
           <motion.h2
             initial={{ opacity: 0, y: 40 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -63,14 +180,17 @@ export default function Contact() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="shrink-0"
           >
-            <Link
-              href="mailto:hello@jameslatten.com"
-              className="inline-block text-xs tracking-widest uppercase px-10 py-5 bg-black text-white hover:bg-black/85 transition-colors"
-            >
-              Send Me an Email
-            </Link>
+            <ContactForm />
+            <p className="text-xs text-black/35 mt-6">
+              Prefer email?{" "}
+              <Link
+                href="mailto:hello@jameslatten.com"
+                className="underline hover:text-black transition-colors"
+              >
+                hello@jameslatten.com
+              </Link>
+            </p>
           </motion.div>
         </div>
 

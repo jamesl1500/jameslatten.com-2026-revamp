@@ -5,7 +5,9 @@ import { projects } from "@/lib/projects";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://www.jameslatten.com";
-  const lastModified = new Date("2026-07-09");
+  // Bump this whenever site content actually changes — sitemap.xml is
+  // regenerated at build time, so this date is otherwise frozen at last build.
+  const lastModified = new Date("2026-08-23");
 
   const projectRoutes: MetadataRoute.Sitemap = projects.map((p) => ({
     url: `${baseUrl}/projects/${p.slug}`,

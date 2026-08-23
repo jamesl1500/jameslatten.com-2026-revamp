@@ -16,7 +16,7 @@ export const projects: Project[] = [
   {
     slug: "foundry-frame",
     title: "Foundry Frame",
-    tagline: "Creative web design agency built for modern brands.",
+    tagline: "Creative web design agency with a 90% client retention rate.",
     description: [
       "Foundry Frame is a creative web design and development agency I founded, delivering high-quality digital experiences across industries. The agency bridges the gap between design and engineering — producing pixel-perfect frontends backed by scalable cloud architectures.",
       "From custom React applications to full WooCommerce storefronts, every project is built with performance and longevity in mind. Foundry Frame has maintained a 90% client retention rate and helped clients measurably increase both productivity and revenue.",
@@ -33,7 +33,7 @@ export const projects: Project[] = [
   {
     slug: "ama-commerce",
     title: "AMA Commerce Platform",
-    tagline: "Large-scale membership and e-commerce system for a national marketing organization.",
+    tagline: "Membership and e-commerce platform that boosted revenue 25% for a national marketing organization.",
     description: [
       "Built and maintained the commerce and membership platform for the American Marketing Association — a large-scale WordPress and WooCommerce system serving thousands of marketers nationwide.",
       "Engineered new features and third-party integrations that boosted revenue by 25% through improved checkout flows, personalised member experiences, and digital product delivery.",
