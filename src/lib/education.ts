@@ -10,13 +10,33 @@ export type Education = {
 
 export const education: Education[] = [
   {
+    slug: "wgu-information-technology-ms",
+    degree: "Master of Science, Information Technology",
+    institution: "Western Governors University",
+    location: "Salt Lake City, Utah",
+    year: "2026",
+    type: "Degree",
+    highlights: [
+      "Advanced coursework in information technology",
+      "Networking, security, and cloud computing",
+      "Software development and project management",
+      "Data analysis and database management",
+      "Project management and leadership skills"
+    ],
+  },
+  {
     slug: "wgu-psychology-bs",
     degree: "Bachelor of Science, Psychology",
     institution: "Western Governors University",
     location: "Salt Lake City, Utah",
     year: "2025",
     type: "Degree",
-    highlights: [],
+    highlights: [
+      "Foundational coursework in psychology",
+      "Research methods and statistical analysis",
+      "Cognitive, developmental, and social psychology",
+      "Behavioral and mental health studies",
+    ],
   },
   {
     slug: "tri-c-aab-programming-development",
@@ -32,15 +52,6 @@ export const education: Education[] = [
       "PHP, Java, C#, HTML, CSS, and React",
       "Full Stack Development",
     ],
-  },
-  {
-    slug: "tri-c-aa",
-    degree: "Associates of Arts",
-    institution: "Cuyahoga Community College",
-    location: "Cleveland, OH",
-    year: "2022",
-    type: "Degree",
-    highlights: [],
   },
   {
     slug: "tri-c-cert-programming-development",

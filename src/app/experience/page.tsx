@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import CtaBand from "@/components/CtaBand";
 import { experiences } from "@/lib/experience";
 
 export const metadata: Metadata = {
@@ -131,6 +132,7 @@ export default function ExperiencePage() {
           </div>
         </section>
       </main>
+      <CtaBand />
       <Footer />
     </>
   );

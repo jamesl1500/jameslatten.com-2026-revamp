@@ -94,7 +94,7 @@ function ContactForm() {
     <form onSubmit={handleSubmit} className="flex flex-col gap-5 max-w-xl">
       <div className="grid sm:grid-cols-2 gap-5">
         <div className="flex flex-col gap-2">
-          <label htmlFor="name" className="text-xs tracking-widest uppercase text-black/40">
+          <label htmlFor="name" className="text-xs tracking-widest uppercase text-white/40">
             Name
           </label>
           <input
@@ -102,11 +102,11 @@ function ContactForm() {
             name="name"
             type="text"
             required
-            className="border border-black/15 px-4 py-3 text-sm focus:outline-none focus:border-black transition-colors"
+            className="border border-white/15 px-4 py-3 text-sm focus:outline-none focus:border-white transition-colors text-white"
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="email" className="text-xs tracking-widest uppercase text-black/40">
+          <label htmlFor="email" className="text-xs tracking-widest uppercase text-white/40">
             Email
           </label>
           <input
@@ -114,13 +114,13 @@ function ContactForm() {
             name="email"
             type="email"
             required
-            className="border border-black/15 px-4 py-3 text-sm focus:outline-none focus:border-black transition-colors"
+            className="border border-white/15 px-4 py-3 text-sm focus:outline-none focus:border-white transition-colors text-white"
           />
         </div>
       </div>
 
       <div className="flex flex-col gap-2">
-        <label htmlFor="message" className="text-xs tracking-widest uppercase text-black/40">
+        <label htmlFor="message" className="text-xs tracking-widest uppercase text-white/40">
           Message
         </label>
         <textarea
@@ -129,7 +129,7 @@ function ContactForm() {
           rows={4}
           required
           placeholder="Tell me about the role or project..."
-          className="border border-black/15 px-4 py-3 text-sm focus:outline-none focus:border-black transition-colors resize-none"
+          className="border border-white/15 px-4 py-3 text-sm focus:outline-none focus:border-white transition-colors resize-none text-white"
         />
       </div>
 
@@ -140,7 +140,7 @@ function ContactForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="self-start text-xs tracking-widest uppercase px-10 py-5 bg-black text-white hover:bg-black/85 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        className="self-start text-xs tracking-widest uppercase px-10 py-5 bg-white text-black cursor-pointer transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {status === "submitting" ? "Sending..." : "Send Message"}
       </button>
@@ -153,14 +153,14 @@ export default function Contact() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="contact" ref={ref} className="bg-white py-24 md:py-36">
+    <section id="contact" ref={ref} className="bg-black py-24 md:py-36">
       <div className="max-w-screen-xl mx-auto px-6 md:px-12">
         {/* Section label */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="text-xs tracking-widest uppercase text-black/35 mb-16"
+          className="text-xs tracking-widest uppercase text-white/35 mb-16"
         >
           Contact
         </motion.p>
@@ -171,7 +171,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: 40 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tight leading-none max-w-2xl"
+            className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight leading-none max-w-2xl text-white"
           >
             Let&apos;s Build Something Great
           </motion.h2>
@@ -182,11 +182,11 @@ export default function Contact() {
             transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           >
             <ContactForm />
-            <p className="text-xs text-black/35 mt-6">
+            <p className="text-xs text-white/35 mt-6">
               Prefer email?{" "}
               <Link
                 href="mailto:hello@jameslatten.com"
-                className="underline hover:text-black transition-colors"
+                className="underline hover:text-white transition-colors"
               >
                 hello@jameslatten.com
               </Link>
@@ -195,7 +195,7 @@ export default function Contact() {
         </div>
 
         {/* Contact details row */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-16 border-t border-white/10">
           {contactDetails.map((item, i) => (
             <motion.div
               key={item.label}
@@ -203,7 +203,7 @@ export default function Contact() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.55, delay: 0.5 + i * 0.09 }}
             >
-              <p className="text-xs tracking-widest uppercase text-black/30 mb-3">
+              <p className="text-xs tracking-widest uppercase text-white/35 mb-3">
                 {item.label}
               </p>
 
@@ -212,12 +212,12 @@ export default function Contact() {
                   href={item.href}
                   target={item.external ? "_blank" : undefined}
                   rel={item.external ? "noopener noreferrer" : undefined}
-                  className="text-sm text-black/60 hover:text-black transition-colors break-all"
+                  className="text-sm text-white/60 hover:text-white transition-colors break-all"
                 >
                   {item.value}
                 </Link>
               ) : (
-                <p className="text-sm text-black/60">{item.value}</p>
+                <p className="text-sm text-white/60">{item.value}</p>
               )}
             </motion.div>
           ))}
@@ -228,13 +228,13 @@ export default function Contact() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="flex flex-wrap gap-6 mt-16 pt-16 border-t border-black/10"
+          className="flex flex-wrap gap-6 mt-16 pt-16 border-t border-white/10"
         >
           <Link
             href="https://www.linkedin.com/in/jameslattenjr"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs tracking-widest uppercase text-black/35 hover:text-black transition-colors"
+            className="text-xs tracking-widest uppercase text-white/35 hover:text-white transition-colors"
           >
             LinkedIn
           </Link>
@@ -242,7 +242,7 @@ export default function Contact() {
             href="https://github.com/jamesl1500"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs tracking-widest uppercase text-black/35 hover:text-black transition-colors"
+            className="text-xs tracking-widest uppercase text-white/35 hover:text-white transition-colors"
           >
             GitHub
           </Link>
@@ -250,7 +250,7 @@ export default function Contact() {
             href="https://www.foundryframe.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs tracking-widest uppercase text-black/35 hover:text-black transition-colors"
+            className="text-xs tracking-widest uppercase text-white/35 hover:text-white transition-colors"
           >
             Foundry Frame Agency
           </Link>

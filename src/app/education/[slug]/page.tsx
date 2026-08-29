@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import CtaBand from "@/components/CtaBand";
 import { education, getEducation } from "@/lib/education";
 
 type Props = {
@@ -199,6 +200,7 @@ export default async function EducationDetailPage({ params }: Props) {
           </section>
         )}
       </main>
+      <CtaBand />
       <Footer />
     </>
   );

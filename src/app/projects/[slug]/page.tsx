@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import CtaBand from "@/components/CtaBand";
 import { projects, getProject } from "@/lib/projects";
 
 type Props = {
@@ -234,6 +235,7 @@ export default async function ProjectPage({ params }: Props) {
           </section>
         )}
       </main>
+      <CtaBand />
       <Footer />
     </>
   );

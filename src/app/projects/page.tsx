@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import CtaBand from "@/components/CtaBand";
 import { projects } from "@/lib/projects";
 
 export const metadata: Metadata = {
@@ -137,6 +138,7 @@ export default function ProjectsPage() {
           </div>
         </section>
       </main>
+      <CtaBand />
       <Footer />
     </>
   );

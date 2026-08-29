@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import CtaBand from "@/components/CtaBand";
 import { experiences, getExperience } from "@/lib/experience";
 
 type Props = {
@@ -194,6 +195,7 @@ export default async function ExperienceDetailPage({ params }: Props) {
           </section>
         )}
       </main>
+      <CtaBand />
       <Footer />
     </>
   );

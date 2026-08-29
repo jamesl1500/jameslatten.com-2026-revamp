@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import CtaBand from "@/components/CtaBand";
 import { education } from "@/lib/education";
 
 export const metadata: Metadata = {
@@ -95,12 +96,12 @@ export default function EducationPage() {
         </section>
 
         <section className="bg-white py-16 md:py-24">
-          <div className="max-w-screen-xl mx-auto px-6 md:px-12 grid sm:grid-cols-2 lg:grid-cols-3 border-l border-t border-black/10">
+          <div className="max-w-screen-xl mx-auto px-6 md:px-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-black/10 border border-black/10">
             {education.map((entry) => (
               <Link
                 key={entry.slug}
                 href={`/education/${entry.slug}`}
-                className="border-r border-b border-black/10 p-8 flex flex-col gap-3 hover:bg-black/[0.02] transition-colors"
+                className="bg-white p-8 flex flex-col gap-3 hover:bg-black/[0.02] transition-colors"
               >
                 <div className="flex items-center justify-between">
                   <span className="text-xs tracking-widest uppercase text-black/30">{entry.type}</span>
@@ -122,6 +123,7 @@ export default function EducationPage() {
           </div>
         </section>
       </main>
+      <CtaBand />
       <Footer />
     </>
   );
