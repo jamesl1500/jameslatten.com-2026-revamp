@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import HeroBackground from "@/components/HeroBackground";
 
 const stats = [
   { value: "4+", label: "Years Experience" },
@@ -35,8 +36,10 @@ const lineVariants = {
 export default function Hero() {
   return (
     <section className="relative min-h-screen bg-black text-white flex flex-col overflow-hidden">
+      <HeroBackground />
+
       {/* Main content */}
-      <div className="flex-1 flex flex-col justify-end max-w-screen-xl mx-auto w-full px-6 md:px-12 pb-16 pt-28">
+      <div className="relative z-10 flex-1 flex flex-col justify-end max-w-screen-xl mx-auto w-full px-6 md:px-12 pb-16 pt-28">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -118,7 +121,7 @@ export default function Hero() {
       </div>
 
       {/* Stats bar */}
-      <div className="border-t border-white/10 max-w-screen-xl mx-auto w-full px-6 md:px-12 py-10">
+      <div className="relative z-10 border-t border-white/10 max-w-screen-xl mx-auto w-full px-6 md:px-12 py-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((stat, i) => (
             <motion.div

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
-import { RSS_FEED } from "@/lib/seo";
+import { RSS_FEED, X_HANDLE } from "@/lib/seo";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -148,6 +148,8 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
+    site: X_HANDLE,
+    creator: X_HANDLE,
     title: "James Latten — Software Engineer | React, TypeScript, Next.js",
     description:
       "Full-stack Software Engineer with 4+ years building React, TypeScript, and cloud-based systems. Based in Sheffield Lake, Ohio.",

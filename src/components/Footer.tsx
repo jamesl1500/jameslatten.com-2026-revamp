@@ -1,9 +1,12 @@
 import Link from "next/link";
+import { SOCIAL_PROFILES } from "@/lib/seo";
 
 const footerLinks = [
-  { href: "https://github.com/jamesl1500", label: "GitHub", external: true },
-  { href: "https://www.linkedin.com/in/jameslattenjr", label: "LinkedIn", external: true },
+  // `profile: true` adds rel="me", marking the link as James's own account
+  { href: SOCIAL_PROFILES.github, label: "GitHub", external: true, profile: true },
+  { href: SOCIAL_PROFILES.linkedin, label: "LinkedIn", external: true, profile: true },
   { href: "https://www.foundryframe.com", label: "Agency", external: true },
+  { href: SOCIAL_PROFILES.x, label: "Twitter/X", external: true, profile: true },
   { href: "mailto:hello@jameslatten.com", label: "Email", external: false },
 ];
 
@@ -26,7 +29,11 @@ export default function Footer() {
               key={link.label}
               href={link.href}
               target={link.external ? "_blank" : undefined}
-              rel={link.external ? "noopener noreferrer" : undefined}
+              rel={
+                link.external
+                  ? `${link.profile ? "me " : ""}noopener noreferrer`
+                  : undefined
+              }
               className="text-xs tracking-widest uppercase text-white/30 hover:text-white transition-colors"
             >
               {link.label}

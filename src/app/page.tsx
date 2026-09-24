@@ -8,7 +8,7 @@ import Education from "@/components/Education";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { education } from "@/lib/education";
-import { PERSON_ID, SITE_URL, WEBSITE_ID } from "@/lib/seo";
+import { PERSON_ID, SITE_URL, SOCIAL_PROFILES, WEBSITE_ID } from "@/lib/seo";
 
 const personSchema = {
   "@type": "Person",
@@ -80,8 +80,9 @@ const personSchema = {
     "Machine Learning",
   ],
   sameAs: [
-    "https://github.com/jamesl1500",
-    "https://www.linkedin.com/in/jameslattenjr",
+    SOCIAL_PROFILES.github,
+    SOCIAL_PROFILES.linkedin,
+    SOCIAL_PROFILES.x,
     "https://www.foundryframe.com",
   ],
 };

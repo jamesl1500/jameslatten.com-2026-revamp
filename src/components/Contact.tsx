@@ -3,6 +3,7 @@
 import { useRef, useState, type FormEvent } from "react";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
+import { SOCIAL_PROFILES } from "@/lib/seo";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
@@ -231,20 +232,28 @@ export default function Contact() {
           className="flex flex-wrap gap-6 mt-16 pt-16 border-t border-white/10"
         >
           <Link
-            href="https://www.linkedin.com/in/jameslattenjr"
+            href={SOCIAL_PROFILES.linkedin}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="me noopener noreferrer"
             className="text-xs tracking-widest uppercase text-white/35 hover:text-white transition-colors"
           >
             LinkedIn
           </Link>
           <Link
-            href="https://github.com/jamesl1500"
+            href={SOCIAL_PROFILES.github}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="me noopener noreferrer"
             className="text-xs tracking-widest uppercase text-white/35 hover:text-white transition-colors"
           >
             GitHub
+          </Link>
+          <Link
+            href={SOCIAL_PROFILES.x}
+            target="_blank"
+            rel="me noopener noreferrer"
+            className="text-xs tracking-widest uppercase text-white/35 hover:text-white transition-colors"
+          >
+            Twitter/X
           </Link>
           <Link
             href="https://www.foundryframe.com"

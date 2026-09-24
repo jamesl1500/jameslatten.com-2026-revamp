@@ -3,6 +3,15 @@ import type { Metadata } from "next";
 export const SITE_URL = "https://www.jameslatten.com";
 export const SITE_NAME = "James Latten";
 
+export const X_HANDLE = "@jameslattendev";
+
+/** Profiles that represent James — used for JSON-LD sameAs and rel="me" links */
+export const SOCIAL_PROFILES = {
+  github: "https://github.com/jamesl1500",
+  linkedin: "https://www.linkedin.com/in/jameslattenjr",
+  x: "https://x.com/jameslattendev",
+};
+
 /** Stable JSON-LD node ids, so pages can reference the same entities */
 export const PERSON_ID = `${SITE_URL}/#person`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
@@ -61,6 +70,8 @@ export function pageMetadata({
     } as Metadata["openGraph"],
     twitter: {
       card: "summary_large_image",
+      site: X_HANDLE,
+      creator: X_HANDLE,
       title: socialTitle,
       description,
     },
