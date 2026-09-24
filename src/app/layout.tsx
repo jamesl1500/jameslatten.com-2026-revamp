@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { RSS_FEED } from "@/lib/seo";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -106,7 +107,8 @@ export const metadata: Metadata = {
     "Full Stack React PHP Developer",
     "Cloud Application Developer AWS",
     // Current employer context
-    "PNC Bank Technology Analyst",
+    "PNC Bank Software Engineer",
+    "PNC Technology Development Program",
   ],
 
   authors: [{ name: "James Latten", url: "https://www.jameslatten.com" }],
@@ -127,6 +129,8 @@ export const metadata: Metadata = {
 
   alternates: {
     canonical: "https://www.jameslatten.com",
+    // Advertise the blog feed site-wide so readers and crawlers can find it
+    types: RSS_FEED,
   },
 
   openGraph: {

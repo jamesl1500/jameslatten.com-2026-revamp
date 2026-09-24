@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
+import createMDX from "@next/mdx";
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
+  pageExtensions: ["ts", "tsx", "md", "mdx"],
 
   async headers() {
     return [
@@ -30,4 +32,16 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+// Plugins are passed by name (not imported) so their options stay
+// serializable — required for Turbopack to hand them to the MDX loader.
+const withMDX = createMDX({
+  options: {
+    remarkPlugins: ["remark-gfm"],
+    rehypePlugins: [
+      "rehype-slug",
+      ["rehype-pretty-code", { theme: "github-light", keepBackground: false }],
+    ],
+  },
+});
+
+export default withMDX(nextConfig);

@@ -1,17 +1,16 @@
 import type { Metadata } from "next";
+import { pageMetadata, WEBSITE_ID } from "@/lib/seo";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import CtaBand from "@/components/CtaBand";
 import { projects } from "@/lib/projects";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Projects",
-  description: "A curated list of software projects and case studies by James Latten.",
-  alternates: {
-    canonical: "https://www.jameslatten.com/projects",
-  },
-};
+  description: "Software projects by James Latten: AI-powered SaaS apps, e-commerce platforms, and enterprise systems built with React, Next.js, TypeScript, and AWS.",
+  path: "/projects",
+});
 
 export default function ProjectsPage() {
   const projectsPageSchema = {
@@ -19,7 +18,7 @@ export default function ProjectsPage() {
     "@type": "CollectionPage",
     name: "Projects",
     url: "https://www.jameslatten.com/projects",
-    description: "A curated list of software projects and case studies by James Latten.",
+    description: "Software projects by James Latten: AI-powered SaaS apps, e-commerce platforms, and enterprise systems built with React, Next.js, TypeScript, and AWS.",
     mainEntity: {
       "@type": "ItemList",
       itemListElement: projects.map((project, index) => ({
@@ -53,11 +52,7 @@ export default function ProjectsPage() {
     "@type": "WebPage",
     name: "Projects",
     url: "https://www.jameslatten.com/projects",
-    isPartOf: {
-      "@type": "WebSite",
-      name: "James Latten — Software Engineer",
-      url: "https://www.jameslatten.com",
-    },
+    isPartOf: { "@id": WEBSITE_ID },
     breadcrumb: {
       "@id": "https://www.jameslatten.com/projects#breadcrumb",
     },

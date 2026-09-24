@@ -1,17 +1,16 @@
 import type { Metadata } from "next";
+import { pageMetadata, WEBSITE_ID } from "@/lib/seo";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import CtaBand from "@/components/CtaBand";
 import { experiences } from "@/lib/experience";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Experience",
-  description: "A complete timeline of professional experience for James Latten.",
-  alternates: {
-    canonical: "https://www.jameslatten.com/experience",
-  },
-};
+  description: "Professional experience of Software Engineer James Latten, from distributed banking systems at PNC Bank to commerce platforms at the American Marketing Association.",
+  path: "/experience",
+});
 
 export default function ExperiencePage() {
   const experiencePageSchema = {
@@ -19,7 +18,7 @@ export default function ExperiencePage() {
     "@type": "CollectionPage",
     name: "Experience",
     url: "https://www.jameslatten.com/experience",
-    description: "A complete timeline of professional experience for James Latten.",
+    description: "Professional experience of Software Engineer James Latten, from distributed banking systems at PNC Bank to commerce platforms at the American Marketing Association.",
     mainEntity: {
       "@type": "ItemList",
       itemListElement: experiences.map((experience, index) => ({
@@ -53,11 +52,7 @@ export default function ExperiencePage() {
     "@type": "WebPage",
     name: "Experience",
     url: "https://www.jameslatten.com/experience",
-    isPartOf: {
-      "@type": "WebSite",
-      name: "James Latten — Software Engineer",
-      url: "https://www.jameslatten.com",
-    },
+    isPartOf: { "@id": WEBSITE_ID },
     breadcrumb: {
       "@id": "https://www.jameslatten.com/experience#breadcrumb",
     },

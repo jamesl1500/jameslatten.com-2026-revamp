@@ -84,7 +84,8 @@ export default function About() {
                 TypeScript to robust backend services with PHP, Python, and Java.
               </p>
               <p>
-                Currently serving as a Software Engineer at PNC Bank,
+                Currently serving as a Software Engineer in the Technology Development
+                Program at PNC Bank,
                 where I work on highly complex distributed systems serving millions of
                 customers. I apply Data Structures and Algorithms to achieve measurable
                 performance improvements, including a 30% boost in system throughput

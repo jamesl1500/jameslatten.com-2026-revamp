@@ -13,7 +13,7 @@ export const experiences: Experience[] = [
   {
     id: "01",
     slug: "pnc-bank",
-    role: "Software Engineer",
+    role: "Software Engineer, Technology Development Program",
     company: "PNC Bank",
     location: "Strongsville, OH",
     period: "Feb 2026 - Present",
@@ -50,4 +50,17 @@ export const experiences: Experience[] = [
 
 export function getExperience(slug: string): Experience | undefined {
   return experiences.find((experience) => experience.slug === slug);
+}
+
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+/** "Feb 2026 - Present" → { startDate: "2026-02" } (ISO 8601 for JSON-LD) */
+export function periodToDates(period: string): { startDate?: string; endDate?: string } {
+  const toIso = (part: string) => {
+    const [month, year] = part.trim().split(/\s+/);
+    const index = MONTHS.indexOf(month.slice(0, 3));
+    return index === -1 || !year ? undefined : `${year}-${String(index + 1).padStart(2, "0")}`;
+  };
+  const [start, end] = period.split(/\s+-\s+/);
+  return { startDate: toIso(start), endDate: end ? toIso(end) : undefined };
 }

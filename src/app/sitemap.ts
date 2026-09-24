@@ -2,8 +2,9 @@ import type { MetadataRoute } from "next";
 import { experiences } from "@/lib/experience";
 import { education } from "@/lib/education";
 import { projects } from "@/lib/projects";
+import { getPosts } from "@/lib/blog";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://www.jameslatten.com";
   // Bump this whenever site content actually changes — sitemap.xml is
   // regenerated at build time, so this date is otherwise frozen at last build.
@@ -28,6 +29,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified,
     changeFrequency: "yearly" as const,
     priority: 0.65,
+  }));
+
+  const posts = (await getPosts()).filter((post) => !post.draft);
+  const blogRoutes: MetadataRoute.Sitemap = posts.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.updated ?? post.date),
+    changeFrequency: "yearly" as const,
+    priority: 0.7,
   }));
 
   return [
@@ -55,8 +64,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly",
       priority: 0.75,
     },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: posts[0] ? new Date(posts[0].updated ?? posts[0].date) : lastModified,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
     ...projectRoutes,
     ...experienceRoutes,
     ...educationRoutes,
+    ...blogRoutes,
   ];
 }

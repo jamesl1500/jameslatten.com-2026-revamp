@@ -56,7 +56,7 @@ export const projects: Project[] = [
       "Integrated third-party APIs and leveraged AI/ML tooling to build scalable, intelligent solutions within PNC's enterprise architecture.",
     ],
     year: "2026",
-    role: "Technology Development Associate/Analyst",
+    role: "Software Engineer, Technology Development Program",
     tags: ["React", "Angular", "TypeScript", "Java", "Spring Boot", "AWS", "Azure", "CI/CD"],
     links: {},
   },

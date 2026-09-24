@@ -35,3 +35,44 @@ body {
   background: #000000;
   color: #ffffff;
 }
+
+/* ---------- Blog post body (MDX) ---------- */
+
+/* Inline code — block code is rendered inside <pre> by rehype-pretty-code */
+.blog-prose :not(pre) > code {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.875em;
+  padding: 0.15em 0.4em;
+  background: rgb(0 0 0 / 0.05);
+  color: #000;
+}
+
+.blog-prose pre code {
+  display: grid;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+.blog-prose pre [data-line] {
+  padding: 0 1.5rem;
+}
+
+.blog-prose pre [data-highlighted-line] {
+  background: rgb(0 0 0 / 0.06);
+  box-shadow: inset 2px 0 0 #000;
+}
+
+.blog-prose figure[data-rehype-pretty-code-figure] {
+  margin: 0;
+}
+
+.blog-prose [data-rehype-pretty-code-title] {
+  margin-top: 2rem;
+  margin-bottom: -2rem;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: rgb(0 0 0 / 0.45);
+  padding: 0.6rem 1.5rem;
+  border: 1px solid rgb(0 0 0 / 0.1);
+  border-bottom: 0;
+}

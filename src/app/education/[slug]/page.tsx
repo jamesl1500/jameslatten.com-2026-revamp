@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { pageMetadata, personRef, truncate, WEBSITE_ID } from "@/lib/seo";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -22,13 +23,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: "Education Not Found" };
   }
 
-  return {
+  return pageMetadata({
     title: entry.degree,
-    description: `${entry.type} at ${entry.institution}`,
-    alternates: {
-      canonical: `https://www.jameslatten.com/education/${entry.slug}`,
-    },
-  };
+    description: truncate(
+      `${entry.degree} — ${entry.type.toLowerCase()} earned by James Latten from ${entry.institution} (${entry.year}). Focus areas: ${entry.highlights.slice(0, 3).join(", ").toLowerCase()}.`
+    ),
+    path: `/education/${entry.slug}`,
+  });
 }
 
 export default async function EducationDetailPage({ params }: Props) {
@@ -55,12 +56,8 @@ export default async function EducationDetailPage({ params }: Props) {
         name: entry.location,
       },
     },
-    validFor: entry.year,
-    creator: {
-      "@type": "Person",
-      name: "James Latten",
-      url: "https://www.jameslatten.com",
-    },
+    dateCreated: entry.year,
+    creator: personRef,
     url: `https://www.jameslatten.com/education/${entry.slug}`,
   };
   const educationBreadcrumbSchema = {
@@ -92,11 +89,7 @@ export default async function EducationDetailPage({ params }: Props) {
     "@type": "WebPage",
     name: entry.degree,
     url: `https://www.jameslatten.com/education/${entry.slug}`,
-    isPartOf: {
-      "@type": "WebSite",
-      name: "James Latten — Software Engineer",
-      url: "https://www.jameslatten.com",
-    },
+    isPartOf: { "@id": WEBSITE_ID },
     breadcrumb: {
       "@id": `https://www.jameslatten.com/education/${entry.slug}#breadcrumb`,
     },

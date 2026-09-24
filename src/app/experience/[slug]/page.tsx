@@ -1,10 +1,11 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { pageMetadata, personRef, truncate, WEBSITE_ID } from "@/lib/seo";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import CtaBand from "@/components/CtaBand";
-import { experiences, getExperience } from "@/lib/experience";
+import { experiences, getExperience, periodToDates } from "@/lib/experience";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -22,13 +23,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: "Experience Not Found" };
   }
 
-  return {
+  return pageMetadata({
     title: `${experience.role} at ${experience.company}`,
-    description: experience.summary,
-    alternates: {
-      canonical: `https://www.jameslatten.com/experience/${experience.slug}`,
-    },
-  };
+    description: truncate(`${experience.role} at ${experience.company} (${experience.period}). ${experience.summary}`),
+    path: `/experience/${experience.slug}`,
+  });
 }
 
 export default async function ExperienceDetailPage({ params }: Props) {
@@ -41,12 +40,14 @@ export default async function ExperienceDetailPage({ params }: Props) {
 
   const index = experiences.findIndex((item) => item.slug === slug);
   const nextExperience = experiences[index + 1];
+  const { startDate, endDate } = periodToDates(experience.period);
   const experienceSchema = {
     "@context": "https://schema.org",
     "@type": "Role",
     roleName: experience.role,
     description: experience.summary,
-    startDate: experience.period,
+    startDate,
+    ...(endDate && { endDate }),
     inDefinedTermSet: "Professional Experience",
     inOrganization: {
       "@type": "Organization",
@@ -56,11 +57,7 @@ export default async function ExperienceDetailPage({ params }: Props) {
         name: experience.location,
       },
     },
-    creator: {
-      "@type": "Person",
-      name: "James Latten",
-      url: "https://www.jameslatten.com",
-    },
+    creator: personRef,
     url: `https://www.jameslatten.com/experience/${experience.slug}`,
   };
   const experienceBreadcrumbSchema = {
@@ -92,11 +89,7 @@ export default async function ExperienceDetailPage({ params }: Props) {
     "@type": "WebPage",
     name: `${experience.role} at ${experience.company}`,
     url: `https://www.jameslatten.com/experience/${experience.slug}`,
-    isPartOf: {
-      "@type": "WebSite",
-      name: "James Latten — Software Engineer",
-      url: "https://www.jameslatten.com",
-    },
+    isPartOf: { "@id": WEBSITE_ID },
     breadcrumb: {
       "@id": `https://www.jameslatten.com/experience/${experience.slug}#breadcrumb`,
     },

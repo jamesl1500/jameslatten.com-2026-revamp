@@ -1,10 +1,11 @@
 import { ImageResponse } from "next/og";
+import { ogFonts } from "@/lib/og-card";
 
 export const alt = "James Latten — Software Engineer | Sheffield Lake, Ohio";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function Image() {
+export default async function Image() {
   return new ImageResponse(
     (
       <div
@@ -16,7 +17,7 @@ export default function Image() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "72px 80px",
-          fontFamily: "system-ui, -apple-system, sans-serif",
+          fontFamily: "Geist",
         }}
       >
         {/* Top label */}
@@ -93,6 +94,6 @@ export default function Image() {
         </div>
       </div>
     ),
-    { ...size }
+    { ...size, fonts: await ogFonts() }
   );
 }

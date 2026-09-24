@@ -1,17 +1,16 @@
 import type { Metadata } from "next";
+import { pageMetadata, WEBSITE_ID } from "@/lib/seo";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import CtaBand from "@/components/CtaBand";
 import { education } from "@/lib/education";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Education",
-  description: "Academic degrees and certificates earned by James Latten.",
-  alternates: {
-    canonical: "https://www.jameslatten.com/education",
-  },
-};
+  description: "Degrees and certificates earned by James Latten, including an M.S. in Information Technology from WGU and programming credentials from Tri-C and LCCC.",
+  path: "/education",
+});
 
 export default function EducationPage() {
   const educationPageSchema = {
@@ -19,7 +18,7 @@ export default function EducationPage() {
     "@type": "CollectionPage",
     name: "Education",
     url: "https://www.jameslatten.com/education",
-    description: "Academic degrees and certificates earned by James Latten.",
+    description: "Degrees and certificates earned by James Latten, including an M.S. in Information Technology from WGU and programming credentials from Tri-C and LCCC.",
     mainEntity: {
       "@type": "ItemList",
       itemListElement: education.map((entry, index) => ({
@@ -53,11 +52,7 @@ export default function EducationPage() {
     "@type": "WebPage",
     name: "Education",
     url: "https://www.jameslatten.com/education",
-    isPartOf: {
-      "@type": "WebSite",
-      name: "James Latten — Software Engineer",
-      url: "https://www.jameslatten.com",
-    },
+    isPartOf: { "@id": WEBSITE_ID },
     breadcrumb: {
       "@id": "https://www.jameslatten.com/education#breadcrumb",
     },

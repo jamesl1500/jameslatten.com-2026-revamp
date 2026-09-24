@@ -7,18 +7,22 @@ import Skills from "@/components/Skills";
 import Education from "@/components/Education";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import { education } from "@/lib/education";
+import { PERSON_ID, SITE_URL, WEBSITE_ID } from "@/lib/seo";
 
 const personSchema = {
-  "@context": "https://schema.org",
   "@type": "Person",
+  "@id": PERSON_ID,
   name: "James Latten",
+  givenName: "James",
+  familyName: "Latten",
   url: "https://www.jameslatten.com",
   email: "hello@jameslatten.com",
   telephone: "+12168897822",
-  jobTitle: "Software Engineer",
+  jobTitle: "Software Engineer, Technology Development Program",
   description:
     "Full-stack Software Engineer with 4+ years of experience building scalable web applications and cloud-based systems using React, TypeScript, PHP, AWS, and more.",
-  image: "https://www.jameslatten.com/opengraph-image",
+  image: `${SITE_URL}/avatar.jpg`,
   address: {
     "@type": "PostalAddress",
     addressLocality: "Sheffield Lake",
@@ -44,6 +48,13 @@ const personSchema = {
       name: "Lorain County Community College",
     },
   ],
+  hasCredential: education.map((entry) => ({
+    "@type": "EducationalOccupationalCredential",
+    name: entry.degree,
+    credentialCategory: entry.type,
+    url: `${SITE_URL}/education/${entry.slug}`,
+    recognizedBy: { "@type": "EducationalOrganization", name: entry.institution },
+  })),
   knowsAbout: [
     "React",
     "TypeScript",
@@ -75,17 +86,28 @@ const personSchema = {
   ],
 };
 
+// ProfilePage is Google's recommended wrapper for a person's homepage; the
+// Person and WebSite nodes carry stable @ids that every other page references.
+const profilePageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "@id": `${SITE_URL}/#profile`,
+  url: SITE_URL,
+  name: "James Latten — Software Engineer",
+  isPartOf: { "@id": WEBSITE_ID },
+  mainEntity: personSchema,
+};
+
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": WEBSITE_ID,
   name: "James Latten — Software Engineer",
   url: "https://www.jameslatten.com",
   description:
     "Portfolio website of James Latten, a full-stack Software Engineer based in Sheffield Lake, Ohio.",
-  author: {
-    "@type": "Person",
-    name: "James Latten",
-  },
+  inLanguage: "en-US",
+  publisher: { "@id": PERSON_ID },
 };
 
 export default function Home() {
@@ -93,7 +115,7 @@ export default function Home() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageSchema) }}
       />
       <script
         type="application/ld+json"

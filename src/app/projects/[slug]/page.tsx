@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { pageMetadata, personRef, truncate, WEBSITE_ID } from "@/lib/seo";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -22,18 +23,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: "Project Not Found" };
   }
 
-  return {
+  return pageMetadata({
     title: project.title,
-    description: project.tagline,
-    alternates: {
-      canonical: `https://www.jameslatten.com/projects/${project.slug}`,
-    },
-    openGraph: {
-      title: `${project.title} — James Latten`,
-      description: project.tagline,
-      url: `https://www.jameslatten.com/projects/${project.slug}`,
-    },
-  };
+    description: truncate(`${project.tagline} ${project.description[0]}`),
+    path: `/projects/${project.slug}`,
+    keywords: project.tags,
+  });
 }
 
 export default async function ProjectPage({ params }: Props) {
@@ -54,11 +49,7 @@ export default async function ProjectPage({ params }: Props) {
     description: project.tagline,
     abstract: project.description.join(" "),
     dateCreated: project.year,
-    creator: {
-      "@type": "Person",
-      name: "James Latten",
-      url: "https://www.jameslatten.com",
-    },
+    creator: personRef,
     keywords: project.tags.join(", "),
     sameAs: [project.links.live, project.links.github].filter(Boolean),
   };
@@ -91,11 +82,7 @@ export default async function ProjectPage({ params }: Props) {
     "@type": "WebPage",
     name: project.title,
     url: `https://www.jameslatten.com/projects/${project.slug}`,
-    isPartOf: {
-      "@type": "WebSite",
-      name: "James Latten — Software Engineer",
-      url: "https://www.jameslatten.com",
-    },
+    isPartOf: { "@id": WEBSITE_ID },
     breadcrumb: {
       "@id": `https://www.jameslatten.com/projects/${project.slug}#breadcrumb`,
     },

@@ -1,0 +1,62 @@
+export const metadata = {
+  title: "Why I Built My Own Blog Instead of Reaching for a CMS",
+  description:
+    "A headless CMS is a great tool — for a team. For a one-person engineering blog, MDX in the repo turned out to be simpler, faster, and more fun.",
+  date: "2026-09-24",
+  tags: ["Next.js", "MDX", "Architecture"],
+};
+
+Every portfolio eventually wants a blog, and every blog starts with the same question: **do I plug in a headless CMS, or build it myself?**
+
+I went back and forth on this. Here's where I landed, and why.
+
+## The case for a headless CMS
+
+Tools like Sanity, Contentful, and Payload are genuinely excellent. They give you:
+
+- A polished editing UI that non-developers can use
+- Structured content models and validation
+- Image pipelines, scheduling, and localization out of the box
+
+If a marketing team, or anyone who isn't me, needed to publish here, that would settle it.
+
+## Why I didn't need one
+
+I'm the only author. I already live in my editor. And the rest of this site treats content as typed data that ships with the code. Projects, experience, and education are all TypeScript modules that get prerendered at build time.
+
+A CMS would add an account, API keys, a webhook to trigger rebuilds, and a network dependency at build time. That's a lot of moving parts to write a few thousand words a month.
+
+## What I built instead
+
+Each post is an `.mdx` file in the repository. Metadata lives in a plain export at the top of the file:
+
+```ts title="src/content/blog/my-post.mdx"
+export const metadata = {
+  title: "My Post",
+  description: "One-sentence summary used for SEO and social cards.",
+  date: "2026-09-24",
+  tags: ["TypeScript"],
+  draft: true, // visible in `next dev`, hidden in production
+};
+```
+
+A small content module reads the directory, pulls each post's metadata, and sorts by date. Every route is statically generated, so posts are plain HTML at the edge with no runtime database.
+
+The stack is intentionally boring:
+
+| Concern             | Tool                     |
+| ------------------- | ------------------------ |
+| Compilation         | `@next/mdx`              |
+| Tables, task lists  | `remark-gfm`             |
+| Heading anchors     | `rehype-slug`            |
+| Syntax highlighting | `rehype-pretty-code` + Shiki |
+
+Publishing is `git push`. Reviewing a draft is a pull request with a Vercel preview URL. Rolling back is `git revert`.
+
+## Keeping the escape hatch
+
+The one design rule I held to: **pages never touch the filesystem directly.** They only call `getPosts()` and `getPost(slug)`. If this blog ever outgrows MDX in a repo, I can rewrite that one module to fetch from a CMS and leave every page untouched.
+
+> Build the simplest thing that works, and put a clean seam where you expect change.
+
+That's good advice for most software, and it applies to a blog too.
