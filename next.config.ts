@@ -4,6 +4,9 @@ import createMDX from "@next/mdx";
 const nextConfig: NextConfig = {
   reactCompiler: true,
   pageExtensions: ["ts", "tsx", "md", "mdx"],
+  experimental: {
+    agentUpgrade: "latest",
+  },
 
   async headers() {
     return [
